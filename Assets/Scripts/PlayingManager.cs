@@ -4,9 +4,8 @@ using System.Collections;
 public class PlayingManager : MonoBehaviour {
 	//rotationは左がプラス
 
-	public GameObject PlayerPrefab;
-	public GameObject PlayerObject;
-	public GameObject StartPos;
+	GameObject PlayerObject;
+	StageConstructor stageConstructor;
 	public GameObject Stage;
 	public float targetRotation = 0f;
 	int turningState = 0;
@@ -21,8 +20,9 @@ public class PlayingManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		PlayerObject = (GameObject)Instantiate(PlayerPrefab, StartPos.transform.position, StartPos.transform.rotation);
-		PlayerObject.transform.parent = Stage.transform;
+		stageConstructor = Stage.GetComponent<StageConstructor>();
+		PlayerObject = stageConstructor.initialize();
+		if(PlayerObject == null) GameObject.Destroy(gameObject);
 		targetRotation = Stage.transform.eulerAngles.z;
 		tempRotation = Stage.transform.eulerAngles.z;
 	}
@@ -71,7 +71,7 @@ public class PlayingManager : MonoBehaviour {
 
 		Stage.transform.eulerAngles = new Vector3(0,0,tempRotation);
 
-		Debug.Log("回転が終了してから: " + timerRotationFinished + "秒");
+		//Debug.Log("回転が終了してから: " + timerRotationFinished + "秒");
 	}
 
 	public void RotateLeft(){
