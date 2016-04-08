@@ -1,8 +1,12 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PlayingManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Plugins/Editor/VSCode.cs">
     <Files>
-      <File FileName="Assets/Scripts/PlayingManager.cs" Line="71" Column="3" />
+      <File FileName="Assets/Plugins/Editor/VSCode.cs" Line="20" Column="20" />
+      <File FileName="Assets/Scripts/StageConstructor.cs" Line="34" Column="3" />
+      <File FileName="Assets/Scripts/PlayingManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Player.cs" Line="1" Column="1" />
+      <File FileName="Assets/Stages/Stage_2.txt" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

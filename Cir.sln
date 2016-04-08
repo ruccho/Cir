@@ -1,7 +1,8 @@
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{8DA9048C-E99C-FC47-7A0D-6EBF3CC79853}") = "Cir", "Assembly-CSharp.csproj", "{6BC83F31-2CDD-A7DD-82D9-9DA9D88FB7AA}"
+EndProject
+Project("{8DA9048C-E99C-FC47-7A0D-6EBF3CC79853}") = "Cir", "Assembly-CSharp-Editor-firstpass.csproj", "{4ACFF6C2-DD6B-ECF3-8BE8-84E6F737D2CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,9 +14,10 @@ Global
 		{6BC83F31-2CDD-A7DD-82D9-9DA9D88FB7AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BC83F31-2CDD-A7DD-82D9-9DA9D88FB7AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BC83F31-2CDD-A7DD-82D9-9DA9D88FB7AA}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
+		{4ACFF6C2-DD6B-ECF3-8BE8-84E6F737D2CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4ACFF6C2-DD6B-ECF3-8BE8-84E6F737D2CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4ACFF6C2-DD6B-ECF3-8BE8-84E6F737D2CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4ACFF6C2-DD6B-ECF3-8BE8-84E6F737D2CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
