@@ -10,17 +10,14 @@ public class TitleManager : MonoBehaviour
     public GameObject MainCamera;
     public GameObject TitleCanvasObject;
     public GameObject ModeSelectCanvasObject;
-    public GameObject PlayPresetCanvasObject;
     Canvas TitleCanvas;
     Canvas ModeSelectCanvas;
-    Canvas PlayPresetCanvas;
 
     // Use this for initialization
     void Start()
     {
         TitleCanvas = TitleCanvasObject.GetComponent<Canvas>();
         ModeSelectCanvas = ModeSelectCanvasObject.GetComponent<Canvas>();
-        PlayPresetCanvas = PlayPresetCanvasObject.GetComponent<Canvas>();
     }
 
     // Update is called once per frame
@@ -42,22 +39,7 @@ public class TitleManager : MonoBehaviour
 
     public void ButtonBack()
     {
-        MainCamera.GetComponent<Animator>().SetTrigger("Backward");
-        if (TitleCanvas.enabled)
-        {
-            return;
-        }
-        else if (ModeSelectCanvas.enabled)
-        {
-            SetActiveScene(TitleCanvas);
-            return;
-        }
-        else if (PlayPresetCanvas.enabled)
-        {
-            SetActiveScene(ModeSelectCanvas);
-            return;
-        }
-        return;
+        
     }
 
     void FadeAndGoPlay()
@@ -93,7 +75,6 @@ public class TitleManager : MonoBehaviour
     {
         TitleCanvas.enabled = false;
         ModeSelectCanvas.enabled = false;
-        PlayPresetCanvas.enabled = false;
         ActiveCanvas.enabled = true;
     }
 }
