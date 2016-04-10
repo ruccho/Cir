@@ -39,6 +39,7 @@ public class TitleManager : MonoBehaviour
 
     public void ButtonBack()
     {
+        MainCamera.GetComponent<Animator>().SetTrigger("BackWard");
         
     }
 

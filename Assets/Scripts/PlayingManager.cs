@@ -17,6 +17,8 @@ public class PlayingManager : MonoBehaviour {
 	float timerRotationFinished;
 	bool isRotationFinished = true;
 	public float CoolTimeSeconds;
+    public GameObject FadeImage;
+    public float FadeTimeSeconds;
 
 	// Use this for initialization
 	void Start () {
@@ -25,6 +27,9 @@ public class PlayingManager : MonoBehaviour {
 		if(PlayerObject == null) GameObject.Destroy(gameObject);
 		targetRotation = Stage.transform.eulerAngles.z;
 		tempRotation = Stage.transform.eulerAngles.z;
+        
+        //フェードアウト
+        FadeImage.GetComponent<Fade>().FadeOut(FadeTimeSeconds);
 	}
 
 	// Update is called once per frame
