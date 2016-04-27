@@ -2,8 +2,6 @@
 using System.Collections;
 
 public class StageConstructor : MonoBehaviour {
-	//エディターから読み込み
-	public TextAsset StageFile;
 	//ファイルから読み出し
 	string StageText;
 	//ステージの横幅（最初２文字）
@@ -34,9 +32,16 @@ public class StageConstructor : MonoBehaviour {
 	}
 
 
-	public GameObject initialize(){
+	public GameObject initialize(GameObject MainCamera){
 		// <summary>StageConstructorに登録されたステージファイルでステージを初期化し、プレイヤーのGameObjectを返します。</summary>
 		if(!ReadStage()) return null;
+        if(StageWidth < StageHeight){
+        MainCamera.GetComponent<Camera>().orthographicSize = StageHeight;
+            
+        }else{
+        MainCamera.GetComponent<Camera>().orthographicSize = StageWidth;
+            
+        }
 		return ConstructStage();
 	}
 
@@ -80,16 +85,12 @@ public class StageConstructor : MonoBehaviour {
 	}
 
 	bool ReadStage(){
-		
-		if(!StageFile) return false;
-
-		//テキストから情報を読み出し
-		StageText = StageFile.text;
+		StageText = PlayerPrefs.GetString("CurrentStageText");
 		if(StageText == "") return false;
 
 		//先頭二文字から読み出して先頭の空白を削除し、サイズの純粋な数字を取得
 		int parseresult;
-		if(!(int.TryParse(StageText.Substring(0, 2).TrimStart(),out parseresult))) return false;
+		if(!(int.TryParse(StageText.Substring(0, 2), out parseresult))) return false;
 		StageWidth = parseresult;
 		Debug.Log("StageWidth:「" + StageWidth.ToString() + "」");
 

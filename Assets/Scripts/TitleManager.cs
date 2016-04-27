@@ -4,8 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class TitleManager : MonoBehaviour
 {
-
-    public GameObject FadeImage;
+    FadeManager fadeManager;
     public float FadeTimeSecond;
     public GameObject MainCamera;
     public GameObject TitleCanvasObject;
@@ -16,6 +15,7 @@ public class TitleManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        fadeManager = GameObject.Find("FadeManager").GetComponent<FadeManager>();
         TitleCanvas = TitleCanvasObject.GetComponent<Canvas>();
         ModeSelectCanvas = ModeSelectCanvasObject.GetComponent<Canvas>();
     }
@@ -28,38 +28,27 @@ public class TitleManager : MonoBehaviour
 
     public void ButtonStart()
     {
+        
+        if(MainCamera.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime != 0) return;
         MainCamera.GetComponent<Animator>().SetTrigger("Forward");
-        SetActiveScene(ModeSelectCanvas);
-    }
-
-    void GoPlayScene()
-    {
-        SceneManager.LoadScene("Play");
+        SetActiveCanvas(ModeSelectCanvas);
     }
 
     public void ButtonBack()
     {
-        MainCamera.GetComponent<Animator>().SetTrigger("BackWard");
-        
-    }
-
-    void FadeAndGoPlay()
-    {
-        FadeImage.GetComponent<Fade>().FadeIn(FadeTimeSecond);
-        Invoke("GoPlayScene", FadeTimeSecond);
-    }
-
-    public void ButtonPlayPreset(int StageNumber)
-    {
-        //Resources/StagesからテキストファイルをロードしPlayerPrefsのCurrentStageTextにセット
-        string stageText = ((TextAsset)Resources.Load("Stages/Stage_" + StageNumber.ToString())).text;
-        PlayerPrefs.SetString("CurrentStageText", stageText);
-        FadeAndGoPlay();
+        if(MainCamera.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime != 0) return;
+        MainCamera.GetComponent<Animator>().SetTrigger("Backward");
+        SetActiveCanvas(TitleCanvas);
     }
 
     public void ButtonNomalMode()
     {
-
+        Invoke("GoPlayPreset", FadeTimeSecond);
+    }
+    void GoPlayPreset()
+    {
+        fadeManager.LoadLevel("PresetStageSelection", FadeTimeSecond);
+        //SceneManager.LoadScene("PresetStageSelection");
     }
 
 
@@ -72,7 +61,7 @@ public class TitleManager : MonoBehaviour
 
     }
 
-    public void SetActiveScene(Canvas ActiveCanvas)
+    public void SetActiveCanvas(Canvas ActiveCanvas)
     {
         TitleCanvas.enabled = false;
         ModeSelectCanvas.enabled = false;

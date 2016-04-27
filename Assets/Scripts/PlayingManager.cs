@@ -19,11 +19,12 @@ public class PlayingManager : MonoBehaviour {
 	public float CoolTimeSeconds;
     public GameObject FadeImage;
     public float FadeTimeSeconds;
+    public GameObject MainCamera;
 
 	// Use this for initialization
 	void Start () {
 		stageConstructor = Stage.GetComponent<StageConstructor>();
-		PlayerObject = stageConstructor.initialize();
+		PlayerObject = stageConstructor.initialize(MainCamera);
 		if(PlayerObject == null) GameObject.Destroy(gameObject);
 		targetRotation = Stage.transform.eulerAngles.z;
 		tempRotation = Stage.transform.eulerAngles.z;
@@ -104,4 +105,5 @@ public class PlayingManager : MonoBehaviour {
 		}
 		
 	}
+
 }
