@@ -43,7 +43,7 @@ Material:
       data:
         first:
           name: _Range
-        second: 1
+        second: 0
     m_Colors:
       data:
         first:
