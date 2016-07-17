@@ -8,6 +8,7 @@ public class TweetPanel : MonoBehaviour {
     public GameObject UserName;
     public GameObject Title;
     public GameObject Favorites;
+    public GameObject detailPanel;
 
     // Use this for initialization
     void Start () {
@@ -41,5 +42,12 @@ public class TweetPanel : MonoBehaviour {
         UserName.GetComponent<UnityEngine.UI.Text>().text = selfTweet.UserName;
         Title.GetComponent<UnityEngine.UI.Text>().text = selfTweet.StageTitle;
         Favorites.GetComponent<UnityEngine.UI.Text>().text = selfTweet.Favorites.ToString();
+    }
+
+    public void OpenDetail()
+    {
+        if (selfTweet == null) return;
+        detailPanel.SetActive(true);
+        detailPanel.GetComponent<TweetDetailPanel>().OpenDetail(selfTweet);
     }
 }

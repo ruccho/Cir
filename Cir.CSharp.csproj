@@ -82,8 +82,10 @@
     <Compile Include="Assets\Scripts\StageConstructor.cs" />
     <Compile Include="Assets\Scripts\TitleManager.cs" />
     <Compile Include="Assets\Scripts\Tweet.cs" />
+    <Compile Include="Assets\Scripts\TweetDetailPanel.cs" />
     <Compile Include="Assets\Scripts\TweetGet.cs" />
     <Compile Include="Assets\Scripts\TweetPanel.cs" />
+    <Compile Include="Assets\Scripts\TwitterAuthor.cs" />
     <Compile Include="Assets\Scripts\TwitterToken.cs" />
     <Compile Include="Assets\naichilab\FadeManager\Sample\FadeSample.cs" />
     <Compile Include="Assets\naichilab\FadeManager\Scripts\FadeManager.cs" />

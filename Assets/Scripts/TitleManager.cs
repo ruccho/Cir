@@ -51,6 +51,11 @@ public class TitleManager : MonoBehaviour
         //SceneManager.LoadScene("PresetStageSelection");
     }
 
+    public void ButtonShareMode()
+    {
+        fadeManager.LoadLevel("ShareStageSelector", FadeTimeSecond);
+    }
+
 
     public void ButtonCreate()
     {
