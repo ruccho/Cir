@@ -53,7 +53,7 @@ public class TitleManager : MonoBehaviour
 
     public void ButtonShareMode()
     {
-        fadeManager.LoadLevel("ShareStageSelector", FadeTimeSecond);
+        fadeManager.LoadLevel("ShareModeMenu", FadeTimeSecond);
     }
 
 

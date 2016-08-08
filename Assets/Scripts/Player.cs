@@ -5,7 +5,10 @@ public class Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+	    if(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "StageCreation")
+        {
+            GetComponent<Rigidbody2D>().isKinematic = true;
+        }
 	}
 	
 	// Update is called once per frame

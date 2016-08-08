@@ -76,10 +76,15 @@
     <Compile Include="Assets\JSON\JSONObject.cs" />
     <Compile Include="Assets\JSON\JSONTemplates.cs" />
     <Compile Include="Assets\JSON\VectorTemplates.cs" />
+    <Compile Include="Assets\Scripts\CircleButton.cs" />
+    <Compile Include="Assets\Scripts\CreationMoveButton.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\PlayingManager.cs" />
     <Compile Include="Assets\Scripts\PresetStageSelector.cs" />
+    <Compile Include="Assets\Scripts\ShareModeMenu.cs" />
+    <Compile Include="Assets\Scripts\StageBorderConstructor.cs" />
     <Compile Include="Assets\Scripts\StageConstructor.cs" />
+    <Compile Include="Assets\Scripts\StageCreation.cs" />
     <Compile Include="Assets\Scripts\TitleManager.cs" />
     <Compile Include="Assets\Scripts\Tweet.cs" />
     <Compile Include="Assets\Scripts\TweetDetailPanel.cs" />

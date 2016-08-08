@@ -7,9 +7,10 @@ public class PlayingManager : MonoBehaviour {
 	GameObject PlayerObject;
 	StageConstructor stageConstructor;
 	public GameObject Stage;
-	public float targetRotation = 0f;
+    public GameObject StageBorder;
+    public float targetRotation = 0f;
 	int turningState = 0;
-	//90の約数を設定してください
+	//90の約数を設定すること
 	public float rotationPerFrame = 1;
 	float tempRotation;
 
@@ -25,6 +26,7 @@ public class PlayingManager : MonoBehaviour {
 	void Start () {
 		stageConstructor = Stage.GetComponent<StageConstructor>();
 		PlayerObject = stageConstructor.initialize(MainCamera);
+        StageBorder.GetComponent<StageBorderConstructor>().Construct();
 		if(PlayerObject == null) GameObject.Destroy(gameObject);
 		targetRotation = Stage.transform.eulerAngles.z;
 		tempRotation = Stage.transform.eulerAngles.z;

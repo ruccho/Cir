@@ -19,10 +19,11 @@ public class StageConstructor : MonoBehaviour {
 	public GameObject FilledPrefab;
 	public GameObject GoalPrefab;
 	public GameObject PlayerPrefab;
+    public GameObject EmptyPrefab;
 
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 	}
 	
 	// Update is called once per frame
@@ -33,49 +34,68 @@ public class StageConstructor : MonoBehaviour {
 
 
 	public GameObject initialize(GameObject MainCamera){
-		// <summary>StageConstructorに登録されたステージファイルでステージを初期化し、プレイヤーのGameObjectを返します。</summary>
+		/// <summary>StageConstructorに登録されたステージファイルでステージを初期化し、プレイヤーのGameObjectを返します。</summary>
 		if(!ReadStage()) return null;
         if(StageWidth < StageHeight){
-        MainCamera.GetComponent<Camera>().orthographicSize = StageHeight;
+            MainCamera.GetComponent<Camera>().orthographicSize = StageHeight + 2;
             
         }else{
-        MainCamera.GetComponent<Camera>().orthographicSize = StageWidth;
-            
+            MainCamera.GetComponent<Camera>().orthographicSize = StageWidth + 2;
         }
-		return ConstructStage();
+
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "StageCreation")
+        {
+            MainCamera.GetComponent<Camera>().orthographicSize = 5;
+        }
+        return ConstructStage();
 	}
 
-	GameObject ConstructStage(){
-		Vector2 targetPoint;
+	GameObject ConstructStage()
+    {
+        float offsetx = -(StageWidth / 2.0f - 0.5f);
+        float offsety = -(StageHeight / 2.0f - 0.5f);
+        Vector2 targetPoint;
 		int readcounter = 0;
-		for(int j = 0; j > -(StageHeight); j--){
+        
+        //後で名前をつけるときに使用
+        GameObject currentObject;
+		for(int j = 0; j < StageHeight; j++){
 			for(int i = 0; i < StageWidth; i++){
 				//Debug.Log("(i, j) = " + i.ToString() + ", " +  j.ToString());
-				targetPoint = new Vector2((float)(i - (StageWidth / 2.0f - 0.5)), (float)(j + (StageHeight / 2.0f - 0.5)));
-
+				targetPoint = new Vector2(i + offsetx, j + offsety);
+                currentObject = null;
 				switch(StageMap[readcounter]){
 				case ('0'):
 					//null。無効
 
 					break;
 				case ('1'):
-					//empty。空白
-
-					break;
+                        //empty。空白
+                        if (EmptyPrefab != null)
+                        {
+                            currentObject = (GameObject)Instantiate(EmptyPrefab, targetPoint, Quaternion.Euler(0, 0, 0));
+                        }
+                        break;
 				case ('2'):
-					//filled。ブロック
-					((GameObject)Instantiate(FilledPrefab, targetPoint, Quaternion.Euler(0,0,0))).transform.parent = this.transform;
+                        //filled。ブロック
+                        currentObject = (GameObject)Instantiate(FilledPrefab, targetPoint, Quaternion.Euler(0, 0, 0));
 					break;
 				case ('3'):
 					//start。スタートポジション
 					PlayerObject = (GameObject)Instantiate(PlayerPrefab, targetPoint, Quaternion.Euler(0,0,0));
 					PlayerObject.transform.parent = this.transform;
-					break;
+                        PlayerObject.name = i + "," + j;
+                        break;
 				case ('4'):
-					//goal。ゴール
-					((GameObject)Instantiate(GoalPrefab, targetPoint, Quaternion.Euler(0,0,0))).transform.parent = this.transform;
+                        //goal。ゴール
+                        currentObject = (GameObject)Instantiate(GoalPrefab, targetPoint, Quaternion.Euler(0, 0, 0));
 					break;
 				}
+                if (currentObject != null)
+                {
+                    currentObject.transform.parent = this.transform;
+                    currentObject.name = i + "," + j;
+                }
 				Debug.Log("座標:" + targetPoint.x.ToString() + ", " + targetPoint.y.ToString() + " 種類:" + StageMap[readcounter].ToString());
 				readcounter++;
 			}

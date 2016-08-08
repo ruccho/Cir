@@ -40,4 +40,9 @@ public class TweetDetailPanel : MonoBehaviour {
     {
         gameObject.SetActive(false);
     }
+
+    public void openInTwitter()
+    {
+        Application.OpenURL("https://twitter.com/" + selfTweet.UserId + "/status/" + selfTweet.TweetId);
+    }
 }
