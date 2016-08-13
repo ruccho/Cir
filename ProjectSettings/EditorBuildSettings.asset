@@ -15,3 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/ShareStageSelector.unity
   - enabled: 1
     path: Assets/Scenes/ShareModeMenu.unity
+  - enabled: 1
+    path: Assets/Scenes/StageCreationMenu.unity
+  - enabled: 1
+    path: Assets/Scenes/StageCreation.unity

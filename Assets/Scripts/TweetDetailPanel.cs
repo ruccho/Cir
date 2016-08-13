@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class TweetDetailPanel : MonoBehaviour {
 
@@ -31,8 +32,8 @@ public class TweetDetailPanel : MonoBehaviour {
         UserImage.GetComponent<UnityEngine.UI.RawImage>().texture = selfTweet.UserImage;
         UserID.GetComponent<UnityEngine.UI.Text>().text = "@" + selfTweet.UserId;
         NameText.GetComponent<UnityEngine.UI.Text>().text = selfTweet.UserName;
-        TitleText.GetComponent<UnityEngine.UI.Text>().text = selfTweet.StageTitle;
-        DescriptionText.GetComponent<UnityEngine.UI.Text>().text = selfTweet.StageDescription;
+        TitleText.GetComponent<UnityEngine.UI.Text>().text = selfTweet.Stage.StageTitle;
+        DescriptionText.GetComponent<UnityEngine.UI.Text>().text = selfTweet.Stage.StageDescription;
         FavoritesText.GetComponent<UnityEngine.UI.Text>().text = selfTweet.Favorites.ToString();
         CreatedAtText.GetComponent<UnityEngine.UI.Text>().text = selfTweet.CreatedAt;
     }
@@ -44,5 +45,12 @@ public class TweetDetailPanel : MonoBehaviour {
     public void openInTwitter()
     {
         Application.OpenURL("https://twitter.com/" + selfTweet.UserId + "/status/" + selfTweet.TweetId);
+    }
+
+    public void play()
+    {
+        PlayerPrefs.SetString("CurrentStageQuery", Query.generateQuery(selfTweet.Stage.StageText, selfTweet.Stage.StageTitle, selfTweet.Stage.StageDescription));
+        PlayerPrefs.SetString("CurrentStageText", selfTweet.Stage.StageText);
+        SceneManager.LoadScene("Play");
     }
 }

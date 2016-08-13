@@ -1,31 +1,35 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
-public class StageBorderConstructor : MonoBehaviour {
+public class StageBorderConstructor : MonoBehaviour
+{
     public GameObject blockPrefab;
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    string StageText;
+    int StageWidth;
+    int StageHeight;
+    string StageBody;
+    // Use this for initialization
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     public void Construct()
     {
         int stageouterwidth;
         int stageouterheight;
-        string StageText = PlayerPrefs.GetString("CurrentStageText");
-        if (StageText == "") return;
 
-        int parseresult;
-        if (!(int.TryParse(StageText.Substring(0, 2), out parseresult))) return;
-        stageouterwidth = parseresult + 2;
+        if (!ReadStage()) return;
 
-        if (StageText.Substring(2).Length % (stageouterwidth - 2) != 0) return;
-        stageouterheight = (StageText.Substring(2).Length / (stageouterwidth - 2)) + 2;
+        stageouterwidth = StageWidth + 2;
+        stageouterheight = StageHeight + 2;
 
 
         //create bottom-border
@@ -64,5 +68,34 @@ public class StageBorderConstructor : MonoBehaviour {
         currentObject.transform.parent = transform;
         //currentObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.5f);
 
+    }
+
+    bool ReadStage()
+    {
+        if (SceneManager.GetActiveScene().name == "StageCreaion")
+        {
+            StageText = (new StageStruct(PlayerPrefs.GetString("CurrentEditingStageQuery"))).StageText;
+        }
+        else
+        {
+            StageText = PlayerPrefs.GetString("CurrentStageText");
+        }
+        if (StageText == "") return false;
+
+        //先頭二文字から読み出して先頭の空白を削除し、サイズの純粋な数字を取得
+        int parseresult;
+        if (!(int.TryParse(StageText.Substring(0, 2), out parseresult))) return false;
+        StageWidth = parseresult;
+        Debug.Log("StageWidth:「" + StageWidth.ToString() + "」");
+
+        //３文字目から最後までを切り取り、StageMapに格納
+        StageBody = StageText.Substring(2);
+        Debug.Log("StageBody:" + StageBody);
+
+        //構造文字列の長さがWidthで割り切れるかチェックし、格納
+        if (StageBody.Length % StageWidth != 0) return false;
+        StageHeight = StageBody.Length / StageWidth;
+
+        return true;
     }
 }

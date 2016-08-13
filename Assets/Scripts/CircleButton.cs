@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class CircleButton : Button, ICanvasRaycastFilter
 {
 
-    
-    public float radius = 60f;
+    [SerializeField]
+    float radius = 70f;
 
     public bool IsRaycastLocationValid(Vector2 sp, Camera eventCamera)
     {

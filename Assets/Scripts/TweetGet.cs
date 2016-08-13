@@ -187,12 +187,13 @@ public class TweetGet : MonoBehaviour
                 for (int i = 0; i < searchedJson.GetField("statuses").Count; i++)
                 {
                     Tweet tempTweet = new Tweet(searchedJson.GetField("statuses").list[i]);
-                    if (tempTweet.isValid == true)
+                if (tempTweet.Stage.isValid == true)
                     {
                         tweetQueue.Add(tempTweet);
-                        lastId = (Double.Parse(tempTweet.TweetId) - 1).ToString();
-                    }
+                    //lastId = (Double.Parse(tempTweet.TweetId) - 1).ToString();
                 }
+                lastId = (Double.Parse(tempTweet.TweetId) - 1).ToString();
+            }
                 if (tweetQueue.Count >= 20) searchEnd = true;
                 CoverPanel.SetActive(false);
             
@@ -246,6 +247,7 @@ public class TweetGet : MonoBehaviour
 
     public void backToShareMenu()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Title");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("ShareModeMenu");
     }
+
 }

@@ -40,7 +40,7 @@ public class TweetPanel : MonoBehaviour {
         //格納されたツイート情報に基づいて、表示を更新
         UserImage.GetComponent<UnityEngine.UI.RawImage>().texture = selfTweet.UserImage;
         UserName.GetComponent<UnityEngine.UI.Text>().text = selfTweet.UserName;
-        Title.GetComponent<UnityEngine.UI.Text>().text = selfTweet.StageTitle;
+        Title.GetComponent<UnityEngine.UI.Text>().text = selfTweet.Stage.StageTitle;
         Favorites.GetComponent<UnityEngine.UI.Text>().text = selfTweet.Favorites.ToString();
     }
 

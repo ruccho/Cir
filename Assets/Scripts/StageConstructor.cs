@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class StageConstructor : MonoBehaviour {
 	//ファイルから読み出し
@@ -105,7 +106,14 @@ public class StageConstructor : MonoBehaviour {
 	}
 
 	bool ReadStage(){
-		StageText = PlayerPrefs.GetString("CurrentStageText");
+        if (SceneManager.GetActiveScene().name == "StageCreaion")
+        {
+            StageText = (new StageStruct(PlayerPrefs.GetString("CurrentEditingStageQuery"))).StageText;
+        }
+        else
+        {
+            StageText = PlayerPrefs.GetString("CurrentStageText");
+        }
 		if(StageText == "") return false;
 
 		//先頭二文字から読み出して先頭の空白を削除し、サイズの純粋な数字を取得

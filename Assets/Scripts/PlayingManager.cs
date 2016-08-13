@@ -108,4 +108,9 @@ public class PlayingManager : MonoBehaviour {
 		
 	}
 
+    public void switchCameraMode()
+    {
+
+    }
+
 }

@@ -14,38 +14,30 @@ Material:
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
-    m_TexEnvs: {}
+    m_TexEnvs: []
     m_Floats:
-      data:
-        first:
-          name: _Stencil
-        second: 0
-      data:
-        first:
-          name: _StencilComp
-        second: 8
-      data:
-        first:
-          name: _StencilOp
-        second: 0
-      data:
-        first:
-          name: _StencilReadMask
-        second: 255
-      data:
-        first:
-          name: _StencilWriteMask
-        second: 255
-      data:
-        first:
-          name: _ColorMask
-        second: 15
-      data:
-        first:
-          name: _Range
-        second: 1
+    - first:
+        name: _ColorMask
+      second: 15
+    - first:
+        name: _Range
+      second: 1
+    - first:
+        name: _Stencil
+      second: 0
+    - first:
+        name: _StencilComp
+      second: 8
+    - first:
+        name: _StencilOp
+      second: 0
+    - first:
+        name: _StencilReadMask
+      second: 255
+    - first:
+        name: _StencilWriteMask
+      second: 255
     m_Colors:
-      data:
-        first:
-          name: _Color
-        second: {r: 0, g: 0, b: 0, a: 1}
+    - first:
+        name: _Color
+      second: {r: 0, g: 0, b: 0, a: 1}
