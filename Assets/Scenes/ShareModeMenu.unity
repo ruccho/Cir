@@ -443,7 +443,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 197623761}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 347832777}
+        m_MethodName: CloseCodePanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &197623761
@@ -603,22 +614,22 @@ Prefab:
     - target: {fileID: 224000010400802558, guid: e72b5b6ea802d2344bf313871fb62be1,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 255.00226
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 224000010400802558, guid: e72b5b6ea802d2344bf313871fb62be1,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 504.36646
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224000010400802558, guid: e72b5b6ea802d2344bf313871fb62be1,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: -509.00452
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224000010400802558, guid: e72b5b6ea802d2344bf313871fb62be1,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: -1008.733
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224000010400802558, guid: e72b5b6ea802d2344bf313871fb62be1,
         type: 2}
@@ -648,6 +659,45 @@ Prefab:
     - target: {fileID: 224000010400802558, guid: e72b5b6ea802d2344bf313871fb62be1,
         type: 2}
       propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013733152182, guid: e72b5b6ea802d2344bf313871fb62be1, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000013502788734, guid: e72b5b6ea802d2344bf313871fb62be1,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000013502788734, guid: e72b5b6ea802d2344bf313871fb62be1,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000013502788734, guid: e72b5b6ea802d2344bf313871fb62be1,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 733
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000013502788734, guid: e72b5b6ea802d2344bf313871fb62be1,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000013502788734, guid: e72b5b6ea802d2344bf313871fb62be1,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000013502788734, guid: e72b5b6ea802d2344bf313871fb62be1,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: -138
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000013502788734, guid: e72b5b6ea802d2344bf313871fb62be1,
+        type: 2}
+      propertyPath: m_AnchorMin.y
       value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -759,9 +809,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06fe5ea67d13bab40b9bcc070673ac83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CodePanel: {fileID: 0}
-  ErrorDialog: {fileID: 0}
-  CodeInput: {fileID: 0}
+  CodePanel: {fileID: 1271789365}
+  ErrorDialog: {fileID: 2038792546}
+  CodeInput: {fileID: 1754362865}
 --- !u!4 &347832778
 Transform:
   m_ObjectHideFlags: 0
@@ -926,7 +976,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 347832777}
-        m_MethodName: Create
+        m_MethodName: OpenCodePanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1038,7 +1088,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: "\xCE"
 --- !u!222 &626289896
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1256,7 +1306,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1006244091}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 347832777}
+        m_MethodName: EnterCode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1006244091
@@ -1600,7 +1661,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1271789366
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2400,6 +2461,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2024270314}
+--- !u!1 &2038792546 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000013733152182, guid: e72b5b6ea802d2344bf313871fb62be1,
+    type: 2}
+  m_PrefabInternal: {fileID: 265918702}
 --- !u!1 &2073672179
 GameObject:
   m_ObjectHideFlags: 0
