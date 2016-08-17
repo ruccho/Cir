@@ -84,10 +84,14 @@
     <Compile Include="Assets\JSON\VectorTemplates.cs" />
     <Compile Include="Assets\Scripts\CircleButton.cs" />
     <Compile Include="Assets\Scripts\CreationMoveButton.cs" />
+    <Compile Include="Assets\Scripts\ErrorDialog.cs" />
+    <Compile Include="Assets\Scripts\Key.cs" />
+    <Compile Include="Assets\Scripts\PlayCamera.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\PlayingManager.cs" />
     <Compile Include="Assets\Scripts\PresetStageSelector.cs" />
     <Compile Include="Assets\Scripts\Query.cs" />
+    <Compile Include="Assets\Scripts\SetWindowSize.cs" />
     <Compile Include="Assets\Scripts\ShareModeMenu.cs" />
     <Compile Include="Assets\Scripts\StageBorderConstructor.cs" />
     <Compile Include="Assets\Scripts\StageConstructor.cs" />
@@ -99,7 +103,6 @@
     <Compile Include="Assets\Scripts\TweetGet.cs" />
     <Compile Include="Assets\Scripts\TweetPanel.cs" />
     <Compile Include="Assets\Scripts\TwitterToken.cs" />
-    <Compile Include="Assets\Scripts\UserIcon.cs" />
     <Compile Include="Assets\naichilab\FadeManager\Sample\FadeSample.cs" />
     <Compile Include="Assets\naichilab\FadeManager\Scripts\FadeManager.cs" />
   </ItemGroup>
@@ -111,6 +114,8 @@
     <None Include="Assets\Resources\Stages\Stage_1.txt" />
     <None Include="Assets\Resources\Stages\Stage_2.txt" />
     <None Include="Assets\Resources\Stages\Stage_3.txt" />
+    <None Include="Assets\Resources\Stages\Stage_4.txt" />
+    <None Include="Assets\Resources\Stages\Stage_5.txt" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlurEffectConeTaps.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\CameraMotionBlur.shader" />

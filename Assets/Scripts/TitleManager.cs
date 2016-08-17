@@ -9,6 +9,7 @@ public class TitleManager : MonoBehaviour
     public GameObject MainCamera;
     public GameObject TitleCanvasObject;
     public GameObject ModeSelectCanvasObject;
+    public AudioClip Enter;
     Canvas TitleCanvas;
     Canvas ModeSelectCanvas;
 
@@ -28,7 +29,7 @@ public class TitleManager : MonoBehaviour
 
     public void ButtonStart()
     {
-        
+        GetComponent<AudioSource>().PlayOneShot(Enter);
         if(MainCamera.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime != 0) return;
         MainCamera.GetComponent<Animator>().SetTrigger("Forward");
         SetActiveCanvas(ModeSelectCanvas);
@@ -36,13 +37,15 @@ public class TitleManager : MonoBehaviour
 
     public void ButtonBack()
     {
-        if(MainCamera.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime != 0) return;
+        GetComponent<AudioSource>().PlayOneShot(Enter);
+        if (MainCamera.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime != 0) return;
         MainCamera.GetComponent<Animator>().SetTrigger("Backward");
         SetActiveCanvas(TitleCanvas);
     }
 
     public void ButtonNomalMode()
     {
+        GetComponent<AudioSource>().PlayOneShot(Enter);
         Invoke("GoPlayPreset", FadeTimeSecond);
     }
     void GoPlayPreset()
@@ -53,6 +56,7 @@ public class TitleManager : MonoBehaviour
 
     public void ButtonShareMode()
     {
+        GetComponent<AudioSource>().PlayOneShot(Enter);
         fadeManager.LoadLevel("ShareModeMenu", FadeTimeSecond);
     }
 

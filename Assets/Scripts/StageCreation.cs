@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class StageCreation : MonoBehaviour
 {
@@ -11,11 +12,16 @@ public class StageCreation : MonoBehaviour
     public GameObject MainCamera;
     public GameObject BrushButtonImage;
     public GameObject MenuPanel;
+    public GameObject InfoPanel;
     public GameObject TitleText;
     public GameObject DescriptionText;
+    public GameObject TitleInputField;
+    public GameObject DescriptionInputField;
+    public GameObject ErrorDialog;
+
     public Sprite[] CreationSprites;
-    int StageWidth;
-    int StageHeight;
+    /*int StageWidth;
+    int StageHeight;*/
     int[,] StageMap;
     private StageStruct Stage;
 
@@ -26,7 +32,7 @@ public class StageCreation : MonoBehaviour
     //この順で！
     enum BrushModeType
     {
-        Null, Empty, Filled, Start, Goal
+        Null, Empty, Filled, Start, Goal, Key, Door
     }
 
     // Use this for initialization
@@ -35,27 +41,17 @@ public class StageCreation : MonoBehaviour
         StageObject.GetComponent<StageConstructor>().initialize(MainCamera);
         StageBorderObject.GetComponent<StageBorderConstructor>().Construct();
         string StageQuery = PlayerPrefs.GetString("CurrentEditingStageQuery");
-        Stage = new StageStruct(PlayerPrefs.GetString("CurrentEditingStageQuery"));
-        string StageText = Stage.StageText;
-        if (StageText == "") return;
-
-        //先頭二文字から読み出して先頭の空白を削除し、サイズの純粋な数字を取得
-        int parseresult;
-        if (!(int.TryParse(StageText.Substring(0, 2), out parseresult))) return;
-        StageWidth = parseresult;
-
-        //構造文字列の長さがWidthで割り切れるかチェックし、格納
-        if (StageText.Substring(2).Length % StageWidth != 0) return;
-        StageHeight = StageText.Substring(2).Length / StageWidth;
+        Stage = new StageStruct(StageQuery);
+        
 
         //(0,0)が左下
-        StageMap = new int[StageWidth, StageHeight];
+        StageMap = new int[Stage.StageWidth, Stage.StageHeight];
         int readcounter = 0;
-        for (int i = 0; i < StageHeight; i++)
+        for (int i = 0; i < Stage.StageHeight; i++)
         {
-            for (int j = 0; j < StageWidth; j++)
+            for (int j = 0; j < Stage.StageWidth; j++)
             {
-                StageMap[j, i] = int.Parse(StageText.Substring(readcounter + 2, 1));
+                StageMap[j, i] = int.Parse(Stage.StageBody.Substring(readcounter, 1));
                 readcounter++;
             }
         }
@@ -63,8 +59,9 @@ public class StageCreation : MonoBehaviour
         RefreshBrushSwitch();
 
         TitleText.GetComponent<Text>().text = Stage.StageTitle;
-        TitleText.GetComponent<Text>().text = Stage.StageDescription;
-
+        DescriptionText.GetComponent<Text>().text = Stage.StageDescription;
+        TitleInputField.GetComponent<InputField>().text = Stage.StageTitle;
+        DescriptionInputField.GetComponent<InputField>().text = Stage.StageDescription;
         return;
     }
 
@@ -90,6 +87,7 @@ public class StageCreation : MonoBehaviour
                 int y = int.Parse(tmpStr[1]);
                 StageMap[x, y] = (int)BrushMode;
                 obj.GetComponent<SpriteRenderer>().sprite = CreationSprites[(int)BrushMode];
+                SaveStage();
             }
         }
 
@@ -97,7 +95,7 @@ public class StageCreation : MonoBehaviour
 
     public void SwitchBrush()
     {
-        if (((int)BrushMode) < 4)
+        if (((int)BrushMode) < 6)
         {
             BrushMode++;
         }
@@ -133,5 +131,63 @@ public class StageCreation : MonoBehaviour
     public void CloseMenu()
     {
         MenuPanel.SetActive(false);
+    }
+
+    public void OpenInfoMenu()
+    {
+        InfoPanel.SetActive(true);
+    }
+    public void CloseInfoMenu()
+    {
+        InfoPanel.SetActive(false);
+    }
+
+    private void SaveStage()
+    {
+        string saveStageText = "";
+        if (Stage.StageWidth.ToString().Length == 1)
+        {
+            saveStageText = "0" + Stage.StageWidth.ToString();
+
+        }
+        else
+        {
+            saveStageText = Stage.StageWidth.ToString();
+        }
+        for (int i = 0; i < Stage.StageHeight; i++)
+        {
+            for (int j = 0; j < Stage.StageWidth; j++)
+            {
+                saveStageText += StageMap[j, i].ToString();
+            }
+        }
+        Stage.StageText = saveStageText;
+        PlayerPrefs.SetString("CurrentEditingStageQuery", Query.generateQuery(saveStageText, Stage.StageTitle, Stage.StageDescription));
+    }
+    public void TestPlay()
+    {
+        if(Query.checkStageCorrection(Stage, true) != "")
+        {
+            ErrorDialog.GetComponent<ErrorDialog>().OpenDialog(Query.checkStageCorrection(Stage, true));
+            return;
+        }
+        PlayerPrefs.SetString("CurrentStageQuery", PlayerPrefs.GetString("CurrentEditingStageQuery"));
+        //PlayerPrefs.SetString("CurrentStageText", Stage.StageText);
+        PlayerPrefs.SetString("CurrentStageInfo", "TEST");
+        SceneManager.LoadScene("Play");
+    }
+
+    public void RefreshStageTitleAndDescription()
+    {
+        Stage.StageTitle = TitleInputField.GetComponent<InputField>().text;
+        Stage.StageDescription = DescriptionInputField.GetComponent<InputField>().text;
+        TitleText.GetComponent<Text>().text = Stage.StageTitle;
+        DescriptionText.GetComponent<Text>().text = Stage.StageDescription;
+        SaveStage();
+    }
+
+    public void backToMenu()
+    {
+        SceneManager.LoadScene("ShareModeMenu");
     }
 }

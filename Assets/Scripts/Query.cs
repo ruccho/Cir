@@ -1,17 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Query/* : MonoBehaviour*/ {
+public class Query/* : MonoBehaviour*/
+{
+    enum StageTextError
+    {
+        StartPosition, KeyDoor
+    }
+    // Use this for initialization
+    void Start()
+    {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     public static string generateQuery(string text, string title, string description)
     {
@@ -27,15 +33,66 @@ public class Query/* : MonoBehaviour*/ {
         return returnQuery;
     }
 
+    public static string checkStageCorrection(StageStruct Stage, bool isEditMode)
+    {
+        if(Stage.isValid == false)
+        {
+            return "コードの構文に誤りがあります。コードが壊れている可能性がります。(isValid==false)";
+        }
+        if (Stage.StageBody.Length - Stage.StageBody.Replace('3'.ToString(), "").Length != 1)
+        {
+            switch (isEditMode)
+            {
+                case true:
+                    return "プレイヤー開始地点が2つ以上あるかまたは1つもありません。";
+                case false:
+                    return "コードの構文に誤りがあります。コードが壊れている可能性がります。";
+            }
+        }
+        if (Stage.StageBody.Length - Stage.StageBody.Replace('3'.ToString(), "").Length == 0)
+        {
+            switch (isEditMode)
+            {
+                case true:
+                    return "ゴールが配置されてません。";
+                case false:
+                    return "コードの構文に誤りがあります。コードが壊れている可能性がります。";
+            }
+        }
+        //5と6が、どっちもがないわけでも、どちらもあるわけでもない
+        if ((!(Stage.StageBody.Length - Stage.StageBody.Replace('5'.ToString(), "").Length == 1 && Stage.StageBody.Length - Stage.StageBody.Replace('6'.ToString(), "").Length == 1)) && !(Stage.StageBody.Length - Stage.StageBody.Replace('5'.ToString(), "").Length == 0 && Stage.StageBody.Length - Stage.StageBody.Replace('6'.ToString(), "").Length == 0))
+        {
+            switch (isEditMode)
+            {
+                case true:
+                    return "鍵とドアの配置に誤りがあります。鍵とドアは１組のみ配置でき、どちらかのみを配置することもできません。";
+                case false:
+                    return "コードの構文に誤りがあります。コードが壊れている可能性がります。";
+            }
+
+        }
+        return "";
+    }
+
 }
 
-public struct StageStruct
+public class StageStruct
 {
+    private bool allowCauseChange = true;
     public bool isValid;
     public int StageVersion;
     public string StageText;
     public string StageTitle;
     public string StageDescription;
+    public int StageWidth;
+    public int StageHeight;
+    public string StageBody
+    {
+        get
+        {
+            return StageText.Substring(2);
+        }
+    }
 
     const int NEWEST_VERSION = 1;
 
@@ -46,6 +103,18 @@ public struct StageStruct
         StageText = text;
         StageTitle = title;
         StageDescription = description;
+        StageWidth = 0;
+        StageHeight = 0;
+        //StageBody = text.Substring(2);
+        if (CalcWidthAndHeight(text) != null)
+        {
+            StageWidth = CalcWidthAndHeight(text)[0];
+            StageHeight = CalcWidthAndHeight(text)[1];
+        }
+        else
+        {
+            isValid = false;
+        }
     }
 
     public StageStruct(string url)
@@ -56,6 +125,10 @@ public struct StageStruct
         StageText = "";
         StageTitle = "";
         StageDescription = "";
+        StageWidth = 0;
+        StageHeight = 0;
+        //StageBody = "";
+
 
         if (url.IndexOf("v=") == -1)
         {
@@ -87,11 +160,26 @@ public struct StageStruct
                 StageTitle = WWW.UnEscapeURL(extractQueryBody(url, 't'));
                 StageDescription = WWW.UnEscapeURL(extractQueryBody(url, 'd'));
                 StageText = extractQueryBody(url, 's');
+                //StageBody = StageText.Substring(2);
+                if (StageText == null || StageText == "")
+                {
+                    isValid = false;
+                    return;
+                }
+                if (CalcWidthAndHeight(StageText) != null)
+                {
+                    StageWidth = CalcWidthAndHeight(StageText)[0];
+                    StageHeight = CalcWidthAndHeight(StageText)[1];
+                }
+                else
+                {
+                    isValid = false;
+                }
                 isValid = true;
             }
         }
     }
-    private string extractQueryBody(string url,  char QueryLetter)
+    private string extractQueryBody(string url, char QueryLetter)
     {
         int QueryIndex = url.IndexOf(QueryLetter + "=");
 
@@ -106,6 +194,26 @@ public struct StageStruct
             nextQueryIndex = url.Length;
         }
         return url.Substring(QueryIndex + 2, nextQueryIndex - QueryIndex - 2);
+    }
+
+    private int[] CalcWidthAndHeight(string StageText)
+    {
+        int StageWidth;
+        int StageHeight;
+        int parseresult;
+        if (!(int.TryParse(StageText.Substring(0, 2), out parseresult))) return null;
+        StageWidth = parseresult;
+
+        //３文字目から最後までを切り取り、StageMapに格納
+        StageText = StageText.Substring(2);
+
+        //構造文字列の長さがWidthで割り切れるかチェックし、格納
+        if (StageText.Length % StageWidth != 0) return null;
+        StageHeight = StageText.Length / StageWidth;
+        int[] returntext = new int[2];
+        returntext[0] = StageWidth;
+        returntext[1] = StageHeight;
+        return returntext;
     }
 }
 

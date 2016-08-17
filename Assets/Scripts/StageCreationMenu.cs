@@ -38,6 +38,11 @@ public class StageCreationMenu : MonoBehaviour {
         SceneManager.LoadScene("StageCreation");
     }
 
+    public void Back()
+    {
+        SceneManager.LoadScene("ShareModeMenu");
+    }
+
     public void CreateNewStage()
     {
         int StageWidth;
@@ -73,7 +78,7 @@ public class StageCreationMenu : MonoBehaviour {
         string query = Query.generateQuery(StageText, "名前未設定", "説明未設定");
         Debug.Log(query);
         PlayerPrefs.SetString("CurrentEditingStageQuery", query);
-        PlayerPrefs.SetString("CurrentStageText", StageText);
+        //PlayerPrefs.SetString("CurrentStageText", StageText);
         SceneManager.LoadScene("StageCreation");
     }
 }

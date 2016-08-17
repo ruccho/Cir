@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 4bfb58bbe1def6d4a85e9b479c792b84
+timeCreated: 1471263038
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - OpenParticle: {fileID: 1000013554889536, guid: 73ad98051b84cc04bb0bf8e6958d83f1,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

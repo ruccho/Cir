@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class Player : MonoBehaviour {
-
+    
 	// Use this for initialization
 	void Start () {
 	    if(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "StageCreation")
@@ -20,7 +20,7 @@ public class Player : MonoBehaviour {
 		Debug.Log("TRIGGER");
 		if(col.gameObject.tag == "Goal"){
 			Debug.Log("GOAL");
-
+            GameObject.Find("PlayManager").GetComponent<PlayingManager>().Goal();
 		}
 	}
 }

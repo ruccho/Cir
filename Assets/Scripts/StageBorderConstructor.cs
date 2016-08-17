@@ -5,10 +5,11 @@ using UnityEngine.SceneManagement;
 public class StageBorderConstructor : MonoBehaviour
 {
     public GameObject blockPrefab;
-    string StageText;
+    /*string StageText;
     int StageWidth;
     int StageHeight;
-    string StageBody;
+    string StageBody;*/
+    StageStruct Stage;
     // Use this for initialization
     void Start()
     {
@@ -28,8 +29,8 @@ public class StageBorderConstructor : MonoBehaviour
 
         if (!ReadStage()) return;
 
-        stageouterwidth = StageWidth + 2;
-        stageouterheight = StageHeight + 2;
+        stageouterwidth = Stage.StageWidth + 2;
+        stageouterheight = Stage.StageHeight + 2;
 
 
         //create bottom-border
@@ -72,30 +73,16 @@ public class StageBorderConstructor : MonoBehaviour
 
     bool ReadStage()
     {
-        if (SceneManager.GetActiveScene().name == "StageCreaion")
+        if (SceneManager.GetActiveScene().name == "StageCreation")
         {
-            StageText = (new StageStruct(PlayerPrefs.GetString("CurrentEditingStageQuery"))).StageText;
+            Stage = new StageStruct(PlayerPrefs.GetString("CurrentEditingStageQuery"));
         }
         else
         {
-            StageText = PlayerPrefs.GetString("CurrentStageText");
+            Stage = new StageStruct(PlayerPrefs.GetString("CurrentStageQuery"));
+            //Stage = new StageStruct(PlayerPrefs.GetString("CurrentStageText"), "", "");
         }
-        if (StageText == "") return false;
-
-        //先頭二文字から読み出して先頭の空白を削除し、サイズの純粋な数字を取得
-        int parseresult;
-        if (!(int.TryParse(StageText.Substring(0, 2), out parseresult))) return false;
-        StageWidth = parseresult;
-        Debug.Log("StageWidth:「" + StageWidth.ToString() + "」");
-
-        //３文字目から最後までを切り取り、StageMapに格納
-        StageBody = StageText.Substring(2);
-        Debug.Log("StageBody:" + StageBody);
-
-        //構造文字列の長さがWidthで割り切れるかチェックし、格納
-        if (StageBody.Length % StageWidth != 0) return false;
-        StageHeight = StageBody.Length / StageWidth;
-
+        if (Stage.isValid == false) return false;
         return true;
     }
 }

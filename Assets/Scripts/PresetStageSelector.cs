@@ -17,7 +17,8 @@ public class PresetStageSelector : MonoBehaviour {
 	}
     
     public void ButtonPlay(int StageNumber){
-        PlayerPrefs.SetString("CurrentStageText", ((TextAsset)Resources.Load("Stages/Stage_" + StageNumber)).text);
+        PlayerPrefs.SetString("CurrentStageQuery", Query.generateQuery(((TextAsset)Resources.Load("Stages/Stage_" + StageNumber)).text, "未設定", "未設定"));
+        PlayerPrefs.SetString("CurrentStageInfo", "PRESET");
         Invoke("GoPlay", FadeTimeSecond);
         
     }

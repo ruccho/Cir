@@ -146,6 +146,8 @@
     <None Include="Assets\Resources\Stages\Stage_1.txt" />
     <None Include="Assets\Resources\Stages\Stage_2.txt" />
     <None Include="Assets\Resources\Stages\Stage_3.txt" />
+    <None Include="Assets\Resources\Stages\Stage_4.txt" />
+    <None Include="Assets\Resources\Stages\Stage_5.txt" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlurEffectConeTaps.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\CameraMotionBlur.shader" />
