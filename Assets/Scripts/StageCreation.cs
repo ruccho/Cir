@@ -18,6 +18,7 @@ public class StageCreation : MonoBehaviour
     public GameObject TitleInputField;
     public GameObject DescriptionInputField;
     public GameObject ErrorDialog;
+    public AudioClip ClickSound;
 
     public Sprite[] CreationSprites;
     /*int StageWidth;
@@ -95,6 +96,7 @@ public class StageCreation : MonoBehaviour
 
     public void SwitchBrush()
     {
+        GetComponent<AudioSource>().PlayOneShot(ClickSound);
         if (((int)BrushMode) < 6)
         {
             BrushMode++;
@@ -126,19 +128,23 @@ public class StageCreation : MonoBehaviour
 
     public void OpenMenu()
     {
+        GetComponent<AudioSource>().PlayOneShot(ClickSound);
         MenuPanel.SetActive(true);
     }
     public void CloseMenu()
     {
+        GetComponent<AudioSource>().PlayOneShot(ClickSound);
         MenuPanel.SetActive(false);
     }
 
     public void OpenInfoMenu()
     {
+        GetComponent<AudioSource>().PlayOneShot(ClickSound);
         InfoPanel.SetActive(true);
     }
     public void CloseInfoMenu()
     {
+        GetComponent<AudioSource>().PlayOneShot(ClickSound);
         InfoPanel.SetActive(false);
     }
 
@@ -166,7 +172,8 @@ public class StageCreation : MonoBehaviour
     }
     public void TestPlay()
     {
-        if(Query.checkStageCorrection(Stage, true) != "")
+        GetComponent<AudioSource>().PlayOneShot(ClickSound);
+        if (Query.checkStageCorrection(Stage, true) != "")
         {
             ErrorDialog.GetComponent<ErrorDialog>().OpenDialog(Query.checkStageCorrection(Stage, true));
             return;
@@ -179,6 +186,7 @@ public class StageCreation : MonoBehaviour
 
     public void RefreshStageTitleAndDescription()
     {
+        GetComponent<AudioSource>().PlayOneShot(ClickSound);
         Stage.StageTitle = TitleInputField.GetComponent<InputField>().text;
         Stage.StageDescription = DescriptionInputField.GetComponent<InputField>().text;
         TitleText.GetComponent<Text>().text = Stage.StageTitle;
@@ -188,6 +196,25 @@ public class StageCreation : MonoBehaviour
 
     public void backToMenu()
     {
+        GetComponent<AudioSource>().PlayOneShot(ClickSound);
         SceneManager.LoadScene("ShareModeMenu");
     }
+
+    public void PublishButton()
+    {
+        GetComponent<AudioSource>().PlayOneShot(ClickSound);
+        if (Query.checkStageCorrection(Stage, true) != "")
+        {
+            ErrorDialog.GetComponent<ErrorDialog>().OpenDialog(Query.checkStageCorrection(Stage, true));
+            return;
+        }
+        if(Stage.StageTitle == "" || Stage.StageTitle == null)
+        {
+            ErrorDialog.GetComponent<ErrorDialog>().OpenDialog("タイトルもしくは説明が未入力です。");
+            return;
+        }
+        SceneManager.LoadScene("Publish");
+
+    }
+
 }

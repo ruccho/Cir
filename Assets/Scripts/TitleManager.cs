@@ -10,12 +10,17 @@ public class TitleManager : MonoBehaviour
     public GameObject TitleCanvasObject;
     public GameObject ModeSelectCanvasObject;
     public AudioClip Enter;
+    public GameObject InfoButton;
     Canvas TitleCanvas;
     Canvas ModeSelectCanvas;
 
     // Use this for initialization
     void Start()
     {
+        if (PlayerPrefs.HasKey("isFirstPlay") == false)
+        {
+            InfoButton.SetActive(false);
+        }
         fadeManager = GameObject.Find("FadeManager").GetComponent<FadeManager>();
         TitleCanvas = TitleCanvasObject.GetComponent<Canvas>();
         ModeSelectCanvas = ModeSelectCanvasObject.GetComponent<Canvas>();
@@ -29,10 +34,18 @@ public class TitleManager : MonoBehaviour
 
     public void ButtonStart()
     {
-        GetComponent<AudioSource>().PlayOneShot(Enter);
-        if(MainCamera.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime != 0) return;
-        MainCamera.GetComponent<Animator>().SetTrigger("Forward");
-        SetActiveCanvas(ModeSelectCanvas);
+        if (PlayerPrefs.HasKey("isFirstPlay") == false)
+        {
+            PlayerPrefs.SetInt("isFirstPlay", 1);
+            SceneManager.LoadScene("Introduction");
+        }
+        else
+        {
+            GetComponent<AudioSource>().PlayOneShot(Enter);
+            if (MainCamera.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime != 0) return;
+            MainCamera.GetComponent<Animator>().SetTrigger("Forward");
+            SetActiveCanvas(ModeSelectCanvas);
+        }
     }
 
     public void ButtonBack()
@@ -67,6 +80,7 @@ public class TitleManager : MonoBehaviour
     }
     public void ButtonInfo()
     {
+        Application.OpenURL("http://ruccho.github.io/cir/howto.html");
 
     }
 

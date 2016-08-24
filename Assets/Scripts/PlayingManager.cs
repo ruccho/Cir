@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayingManager : MonoBehaviour
 {
@@ -28,9 +29,13 @@ public class PlayingManager : MonoBehaviour
     public float FadeTimeSeconds;
     public GameObject MainCamera;
     public GameObject MenuPanel;
-    public GameObject InfoPanelButton;
     public GameObject InfoPanel;
     public GameObject ClearPanel;
+    public GameObject ViewOnTwitterButton1;
+    public GameObject ViewOnTwitterButton2;
+    public GameObject SeeDetailButton;
+    public GameObject StageTitleText;
+    public GameObject StageDescriptionText;
 
 
     float cameraZoomLevel;
@@ -59,22 +64,33 @@ public class PlayingManager : MonoBehaviour
         targetRotation = Stage.transform.eulerAngles.z;
         tempRotation = Stage.transform.eulerAngles.z;
         cameraZoomLevel = MainCamera.GetComponent<Camera>().orthographicSize;
-
+        ClearPanel.SetActive(false);
+        
         //プリセット・シェア・テストのいずれのプレイモードであるか
         switch (PlayerPrefs.GetString("CurrentStageInfo"))
         {
             case "PRESET":
                 PlaySceneMode = PlaySceneModeType.PRESET;
-                InfoPanelButton.SetActive(false);
+                ViewOnTwitterButton1.SetActive(false);
+                ViewOnTwitterButton2.SetActive(false);
+                SeeDetailButton.SetActive(false);
                 break;
             case "TWITTER":
+                ViewOnTwitterButton1.SetActive(true);
+                ViewOnTwitterButton2.SetActive(true);
+                StageTitleText.GetComponent<Text>().text = new StageStruct(PlayerPrefs.GetString("CurrentStageQuery")).StageTitle;
+                StageDescriptionText.GetComponent<Text>().text = new StageStruct(PlayerPrefs.GetString("CurrentStageQuery")).StageDescription;
                 PlaySceneMode = PlaySceneModeType.TWITTER;
                 break;
             case "CODE":
                 PlaySceneMode = PlaySceneModeType.CODE;
+                ViewOnTwitterButton1.SetActive(false);
+                ViewOnTwitterButton2.SetActive(false);
                 break;
             case "TEST":
                 PlaySceneMode = PlaySceneModeType.TEST;
+                ViewOnTwitterButton1.SetActive(false);
+                ViewOnTwitterButton2.SetActive(false);
                 break;
         }
 
@@ -248,5 +264,21 @@ public class PlayingManager : MonoBehaviour
         ClearPanel.SetActive(true);
         ClearPanel.GetComponent<Animator>().SetTrigger("StageCleared");
     }
+
+    public void ViewOnTwitter()
+    {
+        Application.OpenURL(PlayerPrefs.GetString("TweetURL"));
+    }
+
+    public void OpenInfoPanel()
+    {
+        InfoPanel.SetActive(true);
+    }
+
+    public void CloseInfoPanel()
+    {
+        InfoPanel.SetActive(false);
+    }
+
 
 }

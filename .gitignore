@@ -1,5 +1,6 @@
 Library
 Temp
+build
 releases
 *.pidb
 *.unityproj

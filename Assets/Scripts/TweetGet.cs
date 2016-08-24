@@ -18,6 +18,7 @@ public class TweetGet : MonoBehaviour
     public GameObject NextPageButton;
     public GameObject PreviousPageButton;
     public GameObject PageNumberText;
+    public AudioClip ClickSound;
 
 
     enum searchmode
@@ -88,6 +89,7 @@ public class TweetGet : MonoBehaviour
 
     public void nextPage()
     {
+        GetComponent<AudioSource>().PlayOneShot(ClickSound);
         pagenumber++;
         
 
@@ -98,6 +100,7 @@ public class TweetGet : MonoBehaviour
 
     public void previousPage()
     {
+        GetComponent<AudioSource>().PlayOneShot(ClickSound);
         //移動先のページが一ページ目ならpreviouspageボタンを無効にする
         pagenumber--;
 
@@ -206,6 +209,7 @@ public class TweetGet : MonoBehaviour
 
     public void ShowPopular()
     {
+        GetComponent<AudioSource>().PlayOneShot(ClickSound);
         tweetQueue.Clear();
         lastId = null;
         searchEnd = false;
@@ -216,6 +220,7 @@ public class TweetGet : MonoBehaviour
 
     public void ShowRecent()
     {
+        GetComponent<AudioSource>().PlayOneShot(ClickSound);
         tweetQueue.Clear();
         lastId = null;
         searchEnd = false;
@@ -247,6 +252,7 @@ public class TweetGet : MonoBehaviour
 
     public void backToShareMenu()
     {
+        GetComponent<AudioSource>().PlayOneShot(ClickSound);
         UnityEngine.SceneManagement.SceneManager.LoadScene("ShareModeMenu");
     }
 

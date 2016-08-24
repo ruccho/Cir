@@ -106,6 +106,9 @@
     <Reference Include="UnityEditor.iOS.Extensions.Common">
       <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
     </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>Assets\Editor\InterHigh\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Cir.CSharp.Plugins.csproj">
@@ -136,6 +139,8 @@
     <Compile Include="Assets\Editor\ImageEffects\SunShaftsEditor.cs" />
     <Compile Include="Assets\Editor\ImageEffects\TonemappingEditor.cs" />
     <Compile Include="Assets\Editor\ImageEffects\VignetteAndChromaticAberrationEditor.cs" />
+    <Compile Include="Assets\Editor\InterHigh\InterHighBuilder.cs" />
+    <Compile Include="Assets\Editor\InterHigh\InterHighWindow.cs" />
     <Compile Include="Assets\JSON\Editor\JSONChecker.cs" />
   </ItemGroup>
   <ItemGroup>

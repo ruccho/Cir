@@ -37,7 +37,7 @@ public class Query/* : MonoBehaviour*/
     {
         if(Stage.isValid == false)
         {
-            return "コードの構文に誤りがあります。コードが壊れている可能性がります。(isValid==false)";
+            return "コードの構文に誤りがあります。コードが壊れている可能性があります。(isValid==false)";
         }
         if (Stage.StageBody.Length - Stage.StageBody.Replace('3'.ToString(), "").Length != 1)
         {
@@ -46,17 +46,17 @@ public class Query/* : MonoBehaviour*/
                 case true:
                     return "プレイヤー開始地点が2つ以上あるかまたは1つもありません。";
                 case false:
-                    return "コードの構文に誤りがあります。コードが壊れている可能性がります。";
+                    return "コードの構文に誤りがあります。コードが壊れている可能性があります。";
             }
         }
-        if (Stage.StageBody.Length - Stage.StageBody.Replace('3'.ToString(), "").Length == 0)
+        if (Stage.StageBody.Length - Stage.StageBody.Replace('4'.ToString(), "").Length == 0)
         {
             switch (isEditMode)
             {
                 case true:
-                    return "ゴールが配置されてません。";
+                    return "ゴールが配置されていません。";
                 case false:
-                    return "コードの構文に誤りがあります。コードが壊れている可能性がります。";
+                    return "コードの構文に誤りがあります。コードが壊れている可能性があります。";
             }
         }
         //5と6が、どっちもがないわけでも、どちらもあるわけでもない
@@ -67,7 +67,7 @@ public class Query/* : MonoBehaviour*/
                 case true:
                     return "鍵とドアの配置に誤りがあります。鍵とドアは１組のみ配置でき、どちらかのみを配置することもできません。";
                 case false:
-                    return "コードの構文に誤りがあります。コードが壊れている可能性がります。";
+                    return "コードの構文に誤りがあります。コードが壊れている可能性があります。";
             }
 
         }

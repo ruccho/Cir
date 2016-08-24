@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class PresetStageSelector : MonoBehaviour {
-
+    public AudioClip ClickSound;
     public float FadeTimeSecond;
     FadeManager fadeManager;
 	// Use this for initialization
@@ -17,6 +17,7 @@ public class PresetStageSelector : MonoBehaviour {
 	}
     
     public void ButtonPlay(int StageNumber){
+        GetComponent<AudioSource>().PlayOneShot(ClickSound);
         PlayerPrefs.SetString("CurrentStageQuery", Query.generateQuery(((TextAsset)Resources.Load("Stages/Stage_" + StageNumber)).text, "未設定", "未設定"));
         PlayerPrefs.SetString("CurrentStageInfo", "PRESET");
         Invoke("GoPlay", FadeTimeSecond);
@@ -28,7 +29,9 @@ public class PresetStageSelector : MonoBehaviour {
         //SceneManager.LoadScene("Play");
     }
     
-    public void ButtonBack(){
+    public void ButtonBack()
+    {
+        GetComponent<AudioSource>().PlayOneShot(ClickSound);
         fadeManager.LoadLevel("Title", FadeTimeSecond);
     }
     
