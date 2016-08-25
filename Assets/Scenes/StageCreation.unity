@@ -2558,6 +2558,10 @@ Prefab:
       propertyPath: m_Name
       value: MoveButton (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 11441338, guid: ccceb4ad67a5fb04f9efcac1427a96dc, type: 2}
+      propertyPath: MoveDirection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ccceb4ad67a5fb04f9efcac1427a96dc, type: 2}
   m_IsPrefabParent: 0
@@ -3463,10 +3467,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1011505957}
   m_RootOrder: 4
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -172.5, y: -416}
-  m_SizeDelta: {x: 325, y: 78}
+  m_AnchorMin: {x: 0, y: 0.14500001}
+  m_AnchorMax: {x: 0.5, y: 0.20634376}
+  m_AnchoredPosition: {x: 7.5, y: -1}
+  m_SizeDelta: {x: -35, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1917540950
 MonoBehaviour:
@@ -4023,10 +4027,10 @@ RectTransform:
   - {fileID: 1314579590}
   m_Father: {fileID: 1011505957}
   m_RootOrder: 5
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 173.5, y: -416}
-  m_SizeDelta: {x: 347, y: 78}
+  m_AnchorMin: {x: 0.5, y: 0.14500001}
+  m_AnchorMax: {x: 1, y: 0.20634376}
+  m_AnchoredPosition: {x: -6.5, y: -1.5}
+  m_SizeDelta: {x: -13, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2115550943
 MonoBehaviour:

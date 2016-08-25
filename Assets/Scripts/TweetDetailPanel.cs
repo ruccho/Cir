@@ -49,7 +49,7 @@ public class TweetDetailPanel : MonoBehaviour {
 
     public void play()
     {
-        PlayerPrefs.SetString("CurrentStageQuery", Query.generateQuery(selfTweet.Stage.StageText, selfTweet.Stage.StageTitle, selfTweet.Stage.StageDescription));
+        PlayerPrefs.SetString("CurrentStageQuery", Query.generateQuery(selfTweet.Stage.StageText, selfTweet.Stage.StageTitle, selfTweet.Stage.StageDescription, selfTweet.Stage.StageTurnCount));
         //PlayerPrefs.SetString("CurrentStageText", selfTweet.Stage.StageText);
         PlayerPrefs.SetString("CurrentStageInfo", "TWITTER");
         PlayerPrefs.SetString("TweetURL", "https://twitter.com/" + selfTweet.UserId + "/status/" + selfTweet.TweetId);

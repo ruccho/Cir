@@ -214,6 +214,7 @@ public class StageCreation : MonoBehaviour
         TitleText.GetComponent<Text>().text = Stage.StageTitle;
         DescriptionText.GetComponent<Text>().text = Stage.StageDescription;
         SaveStage();
+        InfoPanel.SetActive(false);
     }
 
     public void backToMenu()

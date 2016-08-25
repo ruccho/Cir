@@ -78,7 +78,7 @@ MonoBehaviour:
   isMousePressed: 0
   isPressed: 0
   pointerOn: 0
-  MoveDirection: 1
+  MoveDirection: 0
 --- !u!114 &11468190
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -253,7 +253,7 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 161894}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
@@ -261,10 +261,10 @@ RectTransform:
   - {fileID: 22489814}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_AnchorMin: {x: -0.18533334, y: 0.39649925}
-  m_AnchorMax: {x: 0.18266669, y: 0.60349935}
+  m_AnchorMin: {x: 0.31466666, y: 0.8965008}
+  m_AnchorMax: {x: 0.6853334, y: 1.104}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2, y: 0}
+  m_SizeDelta: {x: -2, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22489814
 RectTransform:
