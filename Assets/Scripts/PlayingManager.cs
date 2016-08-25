@@ -36,9 +36,12 @@ public class PlayingManager : MonoBehaviour
     public GameObject SeeDetailButton;
     public GameObject StageTitleText;
     public GameObject StageDescriptionText;
+    public GameObject RemainTurnText;
+    public GameObject GameOverPanel;
 
-
+    bool isCleared = false;
     float cameraZoomLevel;
+    int turn_remain;
     private CameraModeType CameraMode;
     enum CameraModeType
     {
@@ -65,7 +68,14 @@ public class PlayingManager : MonoBehaviour
         tempRotation = Stage.transform.eulerAngles.z;
         cameraZoomLevel = MainCamera.GetComponent<Camera>().orthographicSize;
         ClearPanel.SetActive(false);
-        
+        if(new StageStruct(PlayerPrefs.GetString("CurrentStageQuery")).StageTurnCount == 0)
+        {
+            turn_remain = -1;
+        }else
+        {
+            turn_remain = new StageStruct(PlayerPrefs.GetString("CurrentStageQuery")).StageTurnCount;
+        }
+        refreshRemain();
         //プリセット・シェア・テストのいずれのプレイモードであるか
         switch (PlayerPrefs.GetString("CurrentStageInfo"))
         {
@@ -153,13 +163,16 @@ public class PlayingManager : MonoBehaviour
             GetComponent<AudioSource>().PlayOneShot(RotateEnd);
             RotateSEPlayed = true;
         }
+            GameOverCheck();
 
-        Stage.transform.eulerAngles = new Vector3(0, 0, tempRotation);
+            Stage.transform.eulerAngles = new Vector3(0, 0, tempRotation);
         //Debug.Log("回転が終了してから: " + timerRotationFinished + "秒");
     }
 
     public void RotateLeft()
     {
+        turn_remain--;
+        refreshRemain();
         if (turningState != 0 || isMoving || !isRotationFinished) return;//回転中or落下中or回転終了からすぐの場合は無効
         PlayerObject.GetComponent<Rigidbody2D>().gravityScale = 0;
         turningState = 1;
@@ -167,6 +180,8 @@ public class PlayingManager : MonoBehaviour
     }
     public void RotateRight()
     {
+        turn_remain--;
+        refreshRemain();
         if (turningState != 0 || isMoving || !isRotationFinished) return;//回転中or落下中or回転終了からすぐの場合は無効
         PlayerObject.GetComponent<Rigidbody2D>().gravityScale = 0;
         turningState = -1;
@@ -218,7 +233,7 @@ public class PlayingManager : MonoBehaviour
                 break;
             case CameraModeType.ZOOM:
                 MainCamera.transform.parent = PlayerObject.transform;
-                MainCamera.GetComponent<Camera>().orthographicSize = 5;
+                MainCamera.GetComponent<Camera>().orthographicSize = 7;
                 MainCamera.transform.localPosition = new Vector3(0, 0, MainCamera.GetComponent<Camera>().transform.position.z);
                 break;
         }
@@ -261,7 +276,19 @@ public class PlayingManager : MonoBehaviour
 
     public void Goal()
     {
+        if(PlaySceneMode == PlaySceneModeType.PRESET)
+        {
+            if(PlayerPrefs.GetInt("ClearedPresetStageNumber") < PlayerPrefs.GetInt("CurrentPresetStageNumber"))
+            {
+                PlayerPrefs.SetInt("ClearedPresetStageNumber", PlayerPrefs.GetInt("CurrentPresetStageNumber"));
+            }
+        }
+        isCleared = true;
         ClearPanel.SetActive(true);
+        if (PlaySceneMode == PlaySceneModeType.TEST)
+        {
+            PlayerPrefs.SetInt("isTested", 1);
+        }
         ClearPanel.GetComponent<Animator>().SetTrigger("StageCleared");
     }
 
@@ -280,5 +307,25 @@ public class PlayingManager : MonoBehaviour
         InfoPanel.SetActive(false);
     }
 
+    void refreshRemain()
+    {
+        if (turn_remain <= -1)
+        {
+            RemainTurnText.GetComponent<Text>().text = "回数制限なし";
+        }
+        else
+        {
+            RemainTurnText.GetComponent<Text>().text = "あと" + turn_remain.ToString() + "回";
+        }
+    }
+    void GameOverCheck()
+    {
+        if (turningState != 0 || isMoving || !isRotationFinished || isCleared == true) return;
+        if (turn_remain == 0)
+        {
+            Debug.Log("GAME OVER");
+            GameOverPanel.SetActive(true);
+        }
+    }
 
 }

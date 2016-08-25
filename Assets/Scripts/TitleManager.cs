@@ -20,6 +20,7 @@ public class TitleManager : MonoBehaviour
         if (PlayerPrefs.HasKey("isFirstPlay") == false)
         {
             InfoButton.SetActive(false);
+            PlayerPrefs.SetInt("ClearedPresetStageNumber", 0);
         }
         fadeManager = GameObject.Find("FadeManager").GetComponent<FadeManager>();
         TitleCanvas = TitleCanvasObject.GetComponent<Canvas>();

@@ -19,17 +19,26 @@ public class Query/* : MonoBehaviour*/
 
     }
 
-    public static string generateQuery(string text, string title, string description)
+   /* public static string generateQuery(string text, string title, string description)
     {
-        //バージョン1のオーバーロードメソッド。
-        //新たなバージョンにはオーバーロードを追加して対応。
         //int version = 1;
         string versionstring = "001";
 
         string textstring = WWW.EscapeURL(text);
         string titlestring = WWW.EscapeURL(title);
         string descriptionstring = WWW.EscapeURL(description);
-        string returnQuery = "?v=" + versionstring + "&s=" + textstring + "&t=" + titlestring + "&d=" + descriptionstring;
+        string returnQuery = "?v=" + versionstring + "&s=" + textstring + "&t=" + titlestring + "&d=" + descriptionstring + "&c=0";
+        return returnQuery;
+    }*/
+    public static string generateQuery(string text, string title, string description, int turncount = 0)
+    {
+        string versionstring = "002";
+
+        string textstring = WWW.EscapeURL(text);
+        string titlestring = WWW.EscapeURL(title);
+        string descriptionstring = WWW.EscapeURL(description);
+        string turncountstring = turncount.ToString();
+        string returnQuery = "?v=" + versionstring + "&s=" + textstring + "&t=" + titlestring + "&d=" + descriptionstring + "&c=" + turncountstring;
         return returnQuery;
     }
 
@@ -86,6 +95,7 @@ public class StageStruct
     public string StageDescription;
     public int StageWidth;
     public int StageHeight;
+    public int StageTurnCount;
     public string StageBody
     {
         get
@@ -94,9 +104,9 @@ public class StageStruct
         }
     }
 
-    const int NEWEST_VERSION = 1;
+    const int NEWEST_VERSION = 2;
 
-    public StageStruct(string text, string title, string description)
+    public StageStruct(string text, string title, string description, int turncount = 0)
     {
         isValid = true;
         StageVersion = 1;
@@ -105,6 +115,7 @@ public class StageStruct
         StageDescription = description;
         StageWidth = 0;
         StageHeight = 0;
+        StageTurnCount = turncount;
         //StageBody = text.Substring(2);
         if (CalcWidthAndHeight(text) != null)
         {
@@ -127,6 +138,7 @@ public class StageStruct
         StageDescription = "";
         StageWidth = 0;
         StageHeight = 0;
+        StageTurnCount = 0;
         //StageBody = "";
 
 
@@ -160,6 +172,17 @@ public class StageStruct
                 StageTitle = WWW.UnEscapeURL(extractQueryBody(url, 't'));
                 StageDescription = WWW.UnEscapeURL(extractQueryBody(url, 'd'));
                 StageText = extractQueryBody(url, 's');
+                if (StageVersion >= 2)
+                {
+                    if (!(int.TryParse(extractQueryBody(url, 'c'), out parseresult)))
+                    {
+                        isValid = false;
+                        return;
+                    }else
+                    {
+                        StageTurnCount = parseresult;
+                    }
+                }
                 //StageBody = StageText.Substring(2);
                 if (StageText == null || StageText == "")
                 {

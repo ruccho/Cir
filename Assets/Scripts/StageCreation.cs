@@ -18,6 +18,7 @@ public class StageCreation : MonoBehaviour
     public GameObject TitleInputField;
     public GameObject DescriptionInputField;
     public GameObject ErrorDialog;
+    public GameObject TurnCountText;
     public AudioClip ClickSound;
 
     public Sprite[] CreationSprites;
@@ -40,6 +41,7 @@ public class StageCreation : MonoBehaviour
     void Start()
     {
         StageObject.GetComponent<StageConstructor>().initialize(MainCamera);
+        MainCamera.GetComponent<Camera>().orthographicSize = 7;
         StageBorderObject.GetComponent<StageBorderConstructor>().Construct();
         string StageQuery = PlayerPrefs.GetString("CurrentEditingStageQuery");
         Stage = new StageStruct(StageQuery);
@@ -63,6 +65,13 @@ public class StageCreation : MonoBehaviour
         DescriptionText.GetComponent<Text>().text = Stage.StageDescription;
         TitleInputField.GetComponent<InputField>().text = Stage.StageTitle;
         DescriptionInputField.GetComponent<InputField>().text = Stage.StageDescription;
+        if(Stage.StageTurnCount == 0)
+        {
+            TurnCountText.GetComponent<InputField>().text = "";
+        }else
+        {
+            TurnCountText.GetComponent<InputField>().text = Stage.StageTurnCount.ToString();
+        }
         return;
     }
 
@@ -168,7 +177,8 @@ public class StageCreation : MonoBehaviour
             }
         }
         Stage.StageText = saveStageText;
-        PlayerPrefs.SetString("CurrentEditingStageQuery", Query.generateQuery(saveStageText, Stage.StageTitle, Stage.StageDescription));
+        PlayerPrefs.SetString("CurrentEditingStageQuery", Query.generateQuery(saveStageText, Stage.StageTitle, Stage.StageDescription, Stage.StageTurnCount));
+        PlayerPrefs.SetInt("isTested", 0);
     }
     public void TestPlay()
     {
@@ -184,9 +194,21 @@ public class StageCreation : MonoBehaviour
         SceneManager.LoadScene("Play");
     }
 
-    public void RefreshStageTitleAndDescription()
+    public void SaveStageInfo()
     {
         GetComponent<AudioSource>().PlayOneShot(ClickSound);
+        if (int.Parse(TurnCountText.GetComponent<InputField>().text) == 0)
+        {
+            ErrorDialog.GetComponent<ErrorDialog>().OpenDialog("回転回数は設定する場合1以上の数値を設定してください。");
+            return;
+        }
+        if (TurnCountText.GetComponent<InputField>().text == "")
+        {
+            Stage.StageTurnCount = 0;
+        }else
+        {
+            Stage.StageTurnCount = int.Parse(TurnCountText.GetComponent<InputField>().text);
+        }
         Stage.StageTitle = TitleInputField.GetComponent<InputField>().text;
         Stage.StageDescription = DescriptionInputField.GetComponent<InputField>().text;
         TitleText.GetComponent<Text>().text = Stage.StageTitle;
@@ -211,6 +233,11 @@ public class StageCreation : MonoBehaviour
         if(Stage.StageTitle == "" || Stage.StageTitle == null)
         {
             ErrorDialog.GetComponent<ErrorDialog>().OpenDialog("タイトルもしくは説明が未入力です。");
+            return;
+        }
+        if (PlayerPrefs.GetInt("isTested") == 0)
+        {
+            ErrorDialog.GetComponent<ErrorDialog>().OpenDialog("最後にもう一度テストプレイでクリアしてください。");
             return;
         }
         SceneManager.LoadScene("Publish");
