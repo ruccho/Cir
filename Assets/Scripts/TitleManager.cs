@@ -9,6 +9,7 @@ public class TitleManager : MonoBehaviour
     public GameObject MainCamera;
     public GameObject TitleCanvasObject;
     public GameObject ModeSelectCanvasObject;
+    public GameObject ErrorDialog;
     public AudioClip Enter;
     public GameObject InfoButton;
     Canvas TitleCanvas;
@@ -17,6 +18,10 @@ public class TitleManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        if(Screen.height < 800)
+        {
+            ErrorDialog.GetComponent<ErrorDialog>().OpenDialog("スクリーンサイズが小さいため表示が崩れる場合があります。");
+        }
         if (PlayerPrefs.HasKey("isFirstPlay") == false)
         {
             InfoButton.SetActive(false);

@@ -90,6 +90,126 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &106056803
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 106056805}
+  - 82: {fileID: 106056804}
+  - 114: {fileID: 106056806}
+  m_Layer: 0
+  m_Name: Audio Source
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &106056804
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 106056803}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!4 &106056805
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 106056803}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -414.82855, y: 219.33011, z: 1213}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+--- !u!114 &106056806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 106056803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 295447ad6d1a23d4daddbd71344a96cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BGMs:
+  - {fileID: 8300000, guid: aefcfacdfe7e7a549bf4190aae6800bc, type: 3}
+  - {fileID: 8300000, guid: a3ab7f45129343447b7f435010fdb627, type: 3}
+  - {fileID: 8300000, guid: ad905fad01bab47429eb5cce26477db3, type: 3}
+  - {fileID: 8300000, guid: 082d009e2c2e25c4eb464026b229fcea, type: 3}
 --- !u!1 &214899192
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,7 +228,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &214899193
 RectTransform:
   m_ObjectHideFlags: 0
@@ -127,7 +247,7 @@ RectTransform:
   - {fileID: 1723804068}
   - {fileID: 700351451}
   m_Father: {fileID: 1047488415}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -192,7 +312,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 387be81276f43cc40bc5c6bb787e8543, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c5144749618b6594fbbb64b75bac9fa5, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -2725,7 +2845,7 @@ RectTransform:
   - {fileID: 853677771}
   - {fileID: 1434008859}
   m_Father: {fileID: 1047488415}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -3240,6 +3360,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 22312040, guid: cd0441c35a95440e1a51f17e802f4d5e, type: 2}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22312040, guid: cd0441c35a95440e1a51f17e802f4d5e, type: 2}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1100242561}
     m_RemovedComponents:
     - {fileID: 11485482, guid: cd0441c35a95440e1a51f17e802f4d5e, type: 2}
     - {fileID: 11468632, guid: cd0441c35a95440e1a51f17e802f4d5e, type: 2}
@@ -3431,6 +3559,10 @@ Prefab:
       propertyPath: GameOverPanel
       value: 
       objectReference: {fileID: 926430212}
+    - target: {fileID: 11472614, guid: f373c1363254541b4a1d436941d303f3, type: 2}
+      propertyPath: BGMObject
+      value: 
+      objectReference: {fileID: 106056803}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f373c1363254541b4a1d436941d303f3, type: 2}
   m_IsPrefabParent: 0
@@ -4007,7 +4139,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1723804070}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1728202189}
+        m_MethodName: ViewOnTwitter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1723804070

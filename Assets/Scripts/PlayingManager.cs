@@ -38,6 +38,7 @@ public class PlayingManager : MonoBehaviour
     public GameObject StageDescriptionText;
     public GameObject RemainTurnText;
     public GameObject GameOverPanel;
+    public GameObject BGMObject;
 
     bool isCleared = false;
     float cameraZoomLevel;
@@ -171,18 +172,18 @@ public class PlayingManager : MonoBehaviour
 
     public void RotateLeft()
     {
+        if (turningState != 0 || isMoving || !isRotationFinished) return;//回転中or落下中or回転終了からすぐの場合は無効
         turn_remain--;
         refreshRemain();
-        if (turningState != 0 || isMoving || !isRotationFinished) return;//回転中or落下中or回転終了からすぐの場合は無効
         PlayerObject.GetComponent<Rigidbody2D>().gravityScale = 0;
         turningState = 1;
         targetRotation = tempRotation + 90;
     }
     public void RotateRight()
     {
+        if (turningState != 0 || isMoving || !isRotationFinished) return;//回転中or落下中or回転終了からすぐの場合は無効
         turn_remain--;
         refreshRemain();
-        if (turningState != 0 || isMoving || !isRotationFinished) return;//回転中or落下中or回転終了からすぐの場合は無効
         PlayerObject.GetComponent<Rigidbody2D>().gravityScale = 0;
         turningState = -1;
         targetRotation = tempRotation - 90;
@@ -276,6 +277,7 @@ public class PlayingManager : MonoBehaviour
 
     public void Goal()
     {
+        BGMObject.GetComponent<AudioSource>().enabled = false;
         if(PlaySceneMode == PlaySceneModeType.PRESET)
         {
             if(PlayerPrefs.GetInt("ClearedPresetStageNumber") < PlayerPrefs.GetInt("CurrentPresetStageNumber"))
