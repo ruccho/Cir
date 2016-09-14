@@ -20,11 +20,12 @@ public class StageCreation : MonoBehaviour
     public GameObject ErrorDialog;
     public GameObject TurnCountText;
     public AudioClip ClickSound;
+    public GameObject BrushPanel;
 
     public Sprite[] CreationSprites;
     /*int StageWidth;
     int StageHeight;*/
-    int[,] StageMap;
+    string[,] StageMap;
     private StageStruct Stage;
 
     string ClickedName = "";
@@ -34,7 +35,7 @@ public class StageCreation : MonoBehaviour
     //この順で！
     enum BrushModeType
     {
-        Null, Empty, Filled, Start, Goal, Key, Door
+        Null, Empty, Filled, Start, Goal, Key, Door, Oneway_Up, Oneway_Left, Oneway_Down, Oneway_Right
     }
 
     // Use this for initialization
@@ -48,13 +49,13 @@ public class StageCreation : MonoBehaviour
         
 
         //(0,0)が左下
-        StageMap = new int[Stage.StageWidth, Stage.StageHeight];
+        StageMap = new string[Stage.StageWidth, Stage.StageHeight];
         int readcounter = 0;
         for (int i = 0; i < Stage.StageHeight; i++)
         {
             for (int j = 0; j < Stage.StageWidth; j++)
             {
-                StageMap[j, i] = int.Parse(Stage.StageBody.Substring(readcounter, 1));
+                StageMap[j, i] = Stage.StageBody.Substring(readcounter, 1);
                 readcounter++;
             }
         }
@@ -95,15 +96,31 @@ public class StageCreation : MonoBehaviour
                 if (tmpStr.Length != 2) return;
                 int x = int.Parse(tmpStr[0]);
                 int y = int.Parse(tmpStr[1]);
-                StageMap[x, y] = (int)BrushMode;
+
+
+                StageMap[x, y] = ((int)BrushMode).ToString();
+                if ((int)BrushMode >= 10){
+                    switch ((int)BrushMode){
+                        case 10:
+                            StageMap[x, y] = "a";
+                            break;
+                    }
+                }
+
+                obj.GetComponent<Transform>().rotation = Quaternion.Euler(0, 0, 0);
                 obj.GetComponent<SpriteRenderer>().sprite = CreationSprites[(int)BrushMode];
+                if ((int)BrushMode >= 7 && (int)BrushMode <= 10)
+                {
+                    //Onewayは共通Prefab/ Spriteなので条件で回転させる。
+                    obj.GetComponent<Transform>().rotation = Quaternion.Euler(0, 0, 90 * ((int)BrushMode - 7));
+                }
                 SaveStage();
             }
         }
 
     }
 
-    public void SwitchBrush()
+    /*public void SwitchBrush()
     {
         GetComponent<AudioSource>().PlayOneShot(ClickSound);
         if (((int)BrushMode) < 6)
@@ -115,11 +132,17 @@ public class StageCreation : MonoBehaviour
             BrushMode = BrushModeType.Empty;
         }
         RefreshBrushSwitch();
-    }
+    }*/
 
     public void RefreshBrushSwitch()
     {
+        BrushButtonImage.GetComponent<RectTransform>().rotation = Quaternion.Euler(0, 0, 0);
         BrushButtonImage.GetComponent<UnityEngine.UI.Image>().sprite = CreationSprites[(int)BrushMode];
+        if((int)BrushMode >= 7 && (int)BrushMode <= 10)
+        {
+            //Onewayは共通Prefab/ Spriteなので条件で回転させる。
+            BrushButtonImage.GetComponent<RectTransform>().rotation = Quaternion.Euler(0, 0, 90 * ((int)BrushMode - 7));
+        }
     }
 
 
@@ -157,6 +180,17 @@ public class StageCreation : MonoBehaviour
         InfoPanel.SetActive(false);
     }
 
+    public void OpenBrushMenu()
+    {
+        GetComponent<AudioSource>().PlayOneShot(ClickSound);
+        BrushPanel.SetActive(true);
+    }
+    public void CloseBrushMenu()
+    {
+        GetComponent<AudioSource>().PlayOneShot(ClickSound);
+        BrushPanel.SetActive(false);
+    }
+
     private void SaveStage()
     {
         string saveStageText = "";
@@ -173,7 +207,7 @@ public class StageCreation : MonoBehaviour
         {
             for (int j = 0; j < Stage.StageWidth; j++)
             {
-                saveStageText += StageMap[j, i].ToString();
+                    saveStageText += StageMap[j, i];
             }
         }
         Stage.StageText = saveStageText;
@@ -243,6 +277,14 @@ public class StageCreation : MonoBehaviour
         }
         SceneManager.LoadScene("Publish");
 
+    }
+
+    public void SetBrush(int ID)
+    {
+        GetComponent<AudioSource>().PlayOneShot(ClickSound);
+        BrushMode = (BrushModeType)ID;
+        RefreshBrushSwitch();
+        BrushPanel.SetActive(false);
     }
 
 }

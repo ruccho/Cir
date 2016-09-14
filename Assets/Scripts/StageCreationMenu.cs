@@ -58,7 +58,7 @@ public class StageCreationMenu : MonoBehaviour {
         }
         if(StageWidth < 2 || StageHeight < 2 || StageWidth > 20 || StageHeight > 20)
         {
-            ErrorDialog.GetComponent<ErrorDialog>().OpenDialog("各辺は2～20である必要があります");
+            ErrorDialog.GetComponent<ErrorDialog>().OpenDialog("各辺は2～20である必要があります");//each side should be 2 from 20
             return;
         }
         //Generate Stage Text(Query-based)
@@ -75,7 +75,7 @@ public class StageCreationMenu : MonoBehaviour {
         {
             StageText += "1";
         }
-        string query = Query.generateQuery(StageText, "名前未設定", "説明未設定", 0);
+        string query = Query.generateQuery(StageText, "名前未設定", "説明未設定", 0);//no name no dicription
         Debug.Log(query);
         PlayerPrefs.SetString("CurrentEditingStageQuery", query);
         //PlayerPrefs.SetString("CurrentStageText", StageText);

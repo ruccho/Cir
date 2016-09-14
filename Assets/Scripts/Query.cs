@@ -32,7 +32,7 @@ public class Query/* : MonoBehaviour*/
     }*/
     public static string generateQuery(string text, string title, string description, int turncount = 0)
     {
-        string versionstring = "002";
+        string versionstring = "003";
 
         string textstring = WWW.EscapeURL(text);
         string titlestring = WWW.EscapeURL(title);
@@ -104,7 +104,7 @@ public class StageStruct
         }
     }
 
-    const int NEWEST_VERSION = 2;
+    const int NEWEST_VERSION = 3;
 
     public StageStruct(string text, string title, string description, int turncount = 0)
     {

@@ -26,6 +26,7 @@ public class StageConstructor : MonoBehaviour
     public GameObject EmptyPrefab;
     public GameObject KeyPrefab;
     public GameObject DoorPrefab;
+    public GameObject OnewayUpPrefab;
 
 
     // Use this for initialization
@@ -112,6 +113,22 @@ public class StageConstructor : MonoBehaviour
                     case ('6'):
                         //door。ドア
                         currentObject = (GameObject)Instantiate(DoorPrefab, targetPoint, Quaternion.Euler(0, 0, 0));
+                        break;
+                    case ('7'):
+                        //oneway-up。上向き方向の一方通行
+                        currentObject = (GameObject)Instantiate(OnewayUpPrefab, targetPoint, Quaternion.Euler(0, 0, 0));
+                        break;
+                    case ('8'):
+                        //oneway-left。左向き方向の一方通行
+                        currentObject = (GameObject)Instantiate(OnewayUpPrefab, targetPoint, Quaternion.Euler(0, 0, 90));
+                        break;
+                    case ('9'):
+                        //oneway-down。下向き方向の一方通行
+                        currentObject = (GameObject)Instantiate(OnewayUpPrefab, targetPoint, Quaternion.Euler(0, 0, 180));
+                        break;
+                    case ('a'):
+                        //oneway-right。右向き方向の一方通行
+                        currentObject = (GameObject)Instantiate(OnewayUpPrefab, targetPoint, Quaternion.Euler(0, 0, 270));
                         break;
                 }
                 if (currentObject != null)
