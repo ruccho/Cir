@@ -231,16 +231,17 @@ public class StageCreation : MonoBehaviour
     public void SaveStageInfo()
     {
         GetComponent<AudioSource>().PlayOneShot(ClickSound);
-        if (int.Parse(TurnCountText.GetComponent<InputField>().text) == 0)
-        {
-            ErrorDialog.GetComponent<ErrorDialog>().OpenDialog("回転回数は設定する場合1以上の数値を設定してください。");
-            return;
-        }
         if (TurnCountText.GetComponent<InputField>().text == "")
         {
             Stage.StageTurnCount = 0;
-        }else
+        }
+        else
         {
+            if (int.Parse(TurnCountText.GetComponent<InputField>().text) == 0)
+            {
+                ErrorDialog.GetComponent<ErrorDialog>().OpenDialog("回転回数は設定する場合1以上の数値を設定してください。");
+                return;
+            }
             Stage.StageTurnCount = int.Parse(TurnCountText.GetComponent<InputField>().text);
         }
         Stage.StageTitle = TitleInputField.GetComponent<InputField>().text;
