@@ -42,7 +42,7 @@ public class StageCreation : MonoBehaviour
     void Start()
     {
         StageObject.GetComponent<StageConstructor>().initialize(MainCamera);
-        MainCamera.GetComponent<Camera>().orthographicSize = 7;
+        MainCamera.GetComponent<Camera>().orthographicSize = 10;
         StageBorderObject.GetComponent<StageBorderConstructor>().Construct();
         string StageQuery = PlayerPrefs.GetString("CurrentEditingStageQuery");
         Stage = new StageStruct(StageQuery);

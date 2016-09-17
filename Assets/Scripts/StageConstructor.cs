@@ -18,7 +18,6 @@ public class StageConstructor : MonoBehaviour
 
     GameObject PlayerObject;
 
-
     //各種構造物のPrefab
     public GameObject FilledPrefab;
     public GameObject GoalPrefab;
@@ -27,6 +26,7 @@ public class StageConstructor : MonoBehaviour
     public GameObject KeyPrefab;
     public GameObject DoorPrefab;
     public GameObject OnewayUpPrefab;
+    
 
 
     // Use this for initialization
@@ -60,6 +60,7 @@ public class StageConstructor : MonoBehaviour
         {
             MainCamera.GetComponent<Camera>().orthographicSize = 5;
         }
+        
         return ConstructStage();
     }
 
@@ -143,6 +144,7 @@ public class StageConstructor : MonoBehaviour
         readcounter = 0;
         return PlayerObject;
     }
+    
 
     bool ReadStage()
     {
