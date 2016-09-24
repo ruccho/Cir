@@ -355,7 +355,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11496018, guid: 53c22e1773be7f84aad8ed8b7b58fa6e, type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 141186, guid: 53c22e1773be7f84aad8ed8b7b58fa6e, type: 2}
       propertyPath: m_IsActive
@@ -408,9 +408,9 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 14bc5695922e4134692ab2b0bf52e418, type: 3}
   - {fileID: 4900000, guid: f20086cd913d01c41ae629cf02989a2c, type: 3}
   - {fileID: 4900000, guid: 10c72349298fbf54ca32c3ed80a74d1f, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 4900000, guid: 8074e9a57e41274468a858e0f542451a, type: 3}
+  - {fileID: 4900000, guid: 4e1db83b09acd9241b359edba3642ed2, type: 3}
+  - {fileID: 4900000, guid: 0820fde8b049abb40837995a62812651, type: 3}
   Buttons:
   - {fileID: 1768271957}
   - {fileID: 590933751}

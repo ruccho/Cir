@@ -132,6 +132,9 @@
     <None Include="Assets\Stages\Stage_10.txt" />
     <None Include="Assets\Stages\Stage_11.txt" />
     <None Include="Assets\Stages\Stage_12.txt" />
+    <None Include="Assets\Stages\Stage_13.txt" />
+    <None Include="Assets\Stages\Stage_14.txt" />
+    <None Include="Assets\Stages\Stage_15.txt" />
     <None Include="Assets\Stages\Stage_2.txt" />
     <None Include="Assets\Stages\Stage_3.txt" />
     <None Include="Assets\Stages\Stage_4.txt" />
