@@ -73,10 +73,20 @@ public class Tweet
         }
         System.DateTime CreatedAtUTC = new System.DateTime(year, month, day, hour, minute, 0, System.DateTimeKind.Utc);
         System.DateTime CreatedAtDateTime = CreatedAtUTC + System.TimeZone.CurrentTimeZone.GetUtcOffset(System.DateTime.Now);
-        CreatedAt = CreatedAtDateTime.Year + "年" + CreatedAtDateTime.Month + "月" + CreatedAtDateTime.Day + "日 " + CreatedAtDateTime.Hour + ":" + CreatedAtDateTime.Minute;
+        string tempHour = CreatedAtDateTime.Hour.ToString();
+        if(tempHour.Length == 1)
+        {
+            tempHour = tempHour.Insert(0, "0");
+        }
+        string tempMinute = CreatedAtDateTime.Minute.ToString();
+        if (tempMinute.Length == 1)
+        {
+            tempMinute = tempMinute.Insert(0, "0");
+        }
+        CreatedAt = CreatedAtDateTime.Year + "年" + CreatedAtDateTime.Month + "月" + CreatedAtDateTime.Day + "日 " + tempHour + ":" + tempMinute;
 
         //Debug.Log(json.GetField("user").GetField("profile_image_url").str);
-        WWW www = new WWW(json.GetField("user").GetField("profile_image_url").str.Replace("\\/", "/"));
+        WWW www = new WWW(json.GetField("user").GetField("profile_image_url").str.Replace("\\/", "/").Replace("normal", "bigger"));
         while (!www.isDone) { }
         if(www.error == null)
         {

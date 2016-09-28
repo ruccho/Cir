@@ -5,7 +5,8 @@ public class GameInitial //: MonoBehaviour
     [RuntimeInitializeOnLoadMethod]
     static void OnRuntimeMethodLoad()
     {
-        Screen.SetResolution(Screen.height / 16 * 9, Screen.height, false);
+        
+        Screen.SetResolution(Screen.height / 16 * 9, Screen.height, Screen.fullScreen);
 
     }
 

@@ -20,6 +20,10 @@ public class TweetGet : MonoBehaviour
     public GameObject PageNumberText;
     public AudioClip ClickSound;
 
+    //設定されているページ数のキューが埋まっているか
+    bool isFilled = false;
+    int targetPageSize = 20;
+
 
     enum searchmode
     {
@@ -130,7 +134,7 @@ public class TweetGet : MonoBehaviour
     //現在の次のページまでFillする
     IEnumerator FillQueue()
     {
-        while (!searchEnd)
+        while (!searchEnd && !isFilled)
         {
            
                 //検索の余地があり、かつキューが満たされていない
@@ -197,10 +201,11 @@ public class TweetGet : MonoBehaviour
                 }
                 lastId = (Double.Parse(tempTweet.TweetId) - 1).ToString();
             }
-                if (tweetQueue.Count >= 20) searchEnd = true;
+                if (tweetQueue.Count >= targetPageSize * ELEMENTS_ONONEPAGE) isFilled = true;
                 CoverPanel.SetActive(false);
             
         }
+        //キューが満たされたか、これ以上検索できなくなった
     
         ShowItems();
         yield break;
@@ -232,12 +237,20 @@ public class TweetGet : MonoBehaviour
     private void RefreshButtonState()
     {
         //次のページに表示されるべきアイテムがあるかチェック
-        if (pagenumber * ELEMENTS_ONONEPAGE >= tweetQueue.Count)
+        if (pagenumber * ELEMENTS_ONONEPAGE >= tweetQueue.Count && searchEnd)
         {
-            //現在のページが最終
+            //現在のページが最終、キューへの追加も不可能
             NextPageButton.SetActive(false);
         }else
         {
+            if(pagenumber * ELEMENTS_ONONEPAGE >= tweetQueue.Count)
+            {
+                //現在ページが最終だが、検索は終了していない
+                //設定ページ数を拡張して再度フィル
+                targetPageSize += 5;
+                isFilled = false;
+                FillQueue();
+            }
             NextPageButton.SetActive(true);
         }
         if(pagenumber == 1)

@@ -44,13 +44,18 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 5, y: 5, z: 5, w: 5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 70
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
   buildTargetSettings:
   - buildTarget: WebGL
-    maxTextureSize: 1024
+    maxTextureSize: 512
+    textureFormat: -3
+    compressionQuality: 50
+    allowsAlphaSplitting: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
     textureFormat: -3
     compressionQuality: 50
     allowsAlphaSplitting: 0

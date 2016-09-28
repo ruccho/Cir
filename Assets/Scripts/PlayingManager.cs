@@ -2,6 +2,9 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using UnityEngine.Advertisements;
+
 
 public class PlayingManager : MonoBehaviour
 {
@@ -23,7 +26,7 @@ public class PlayingManager : MonoBehaviour
     bool RotateSEPlayed;
     bool isMoving = false;
     float timerRotationFinished;
-    bool isRotationFinished = true;
+    bool isRotationFinished = false;
     public float CoolTimeSeconds;
     public GameObject FadeImage;
     public float FadeTimeSeconds;
@@ -40,6 +43,21 @@ public class PlayingManager : MonoBehaviour
     public GameObject GameOverPanel;
     public GameObject BGMObject;
 
+    bool perfectBonus = true;
+    struct PlayState
+    {
+        public readonly Vector2 position;
+        public readonly int stageRotation;
+
+        public PlayState(Vector2 pos, int rotation)
+        {
+            position = pos;
+            stageRotation = rotation;
+        }
+    }
+    List<PlayState> StateHistory;
+    bool historySaved = false;
+
     bool isCleared = false;
     float cameraZoomLevel;
     int turn_remain;
@@ -54,10 +72,17 @@ public class PlayingManager : MonoBehaviour
     {
         PRESET, TWITTER, CODE, TEST
     }
+    void Awake()
+    {
+#if UNITY_ADROID
+        Advertisement.Initialize("1152993");
+#endif
+    }
 
     // Use this for initialization
     void Start()
     {
+        StateHistory = new List<PlayState>();
         RotateSEPlayed = false;
         CameraMode = CameraModeType.BIRDSEYE;
         RefreshCameraView();
@@ -69,10 +94,12 @@ public class PlayingManager : MonoBehaviour
         tempRotation = Stage.transform.eulerAngles.z;
         cameraZoomLevel = MainCamera.GetComponent<Camera>().orthographicSize;
         ClearPanel.SetActive(false);
-        if(new StageStruct(PlayerPrefs.GetString("CurrentStageQuery")).StageTurnCount == 0)
+        if (new StageStruct(PlayerPrefs.GetString("CurrentStageQuery")).StageTurnCount == 0)
         {
+            perfectBonus = false;
             turn_remain = -1;
-        }else
+        }
+        else
         {
             turn_remain = new StageStruct(PlayerPrefs.GetString("CurrentStageQuery")).StageTurnCount;
         }
@@ -119,29 +146,40 @@ public class PlayingManager : MonoBehaviour
         isMoving = ((int)PlayerObject.GetComponent<Rigidbody2D>().velocity.y < 0);
         //Debug.Log(PlayerObject.GetComponent<Rigidbody2D>().velocity.y.ToString());
 
+
         if (turningState == 1 && targetRotation > tempRotation)
         {
 
             //回転中に設定
             isRotationFinished = false;
+            historySaved = false;
 
             //回転終了からの時間を記録するタイマーをリフレッシュ
             timerRotationFinished = 0f;
 
             //左回り設定で、左回りの余地あり
-            tempRotation += rotationPerFrame;
+            tempRotation += rotationPerFrame * Time.deltaTime * 60;
+            if (targetRotation < tempRotation)
+            {
+                tempRotation = targetRotation;
+            }
         }
         else if (turningState == -1 && targetRotation < tempRotation)
         {
 
             //回転中に設定
             isRotationFinished = false;
+            historySaved = false;
 
             //回転終了からの時間を記録するタイマーをリフレッシュ
             timerRotationFinished = 0f;
 
             //右回り設定で、右回りの余地あり
-            tempRotation -= rotationPerFrame;
+            tempRotation -= rotationPerFrame * Time.deltaTime * 60;
+            if (targetRotation > tempRotation)
+            {
+                tempRotation = targetRotation;
+            }
         }
         else
         {
@@ -164,9 +202,16 @@ public class PlayingManager : MonoBehaviour
             GetComponent<AudioSource>().PlayOneShot(RotateEnd);
             RotateSEPlayed = true;
         }
-            GameOverCheck();
+        //落下終了時一フレームのみ実行
+        if (!historySaved && turningState == 0 && !isMoving && isRotationFinished)
+        {
+            StateHistory.Add(new PlayState(PlayerObject.transform.localPosition, (int)Stage.transform.localRotation.eulerAngles.z));
+            historySaved = true;
+        }
 
-            Stage.transform.eulerAngles = new Vector3(0, 0, tempRotation);
+        GameOverCheck();
+
+        Stage.transform.eulerAngles = new Vector3(0, 0, tempRotation);
         //Debug.Log("回転が終了してから: " + timerRotationFinished + "秒");
     }
 
@@ -278,9 +323,9 @@ public class PlayingManager : MonoBehaviour
     public void Goal()
     {
         BGMObject.GetComponent<AudioSource>().enabled = false;
-        if(PlaySceneMode == PlaySceneModeType.PRESET)
+        if (PlaySceneMode == PlaySceneModeType.PRESET)
         {
-            if(PlayerPrefs.GetInt("ClearedPresetStageNumber") < PlayerPrefs.GetInt("CurrentPresetStageNumber"))
+            if (PlayerPrefs.GetInt("ClearedPresetStageNumber") < PlayerPrefs.GetInt("CurrentPresetStageNumber"))
             {
                 PlayerPrefs.SetInt("ClearedPresetStageNumber", PlayerPrefs.GetInt("CurrentPresetStageNumber"));
             }
@@ -330,4 +375,51 @@ public class PlayingManager : MonoBehaviour
         }
     }
 
+
+    public void undo()
+    {
+        if (turningState != 0 || isMoving || !isRotationFinished) return;//回転中or落下中or回転終了からすぐの場合は無効
+        if (StateHistory.Count <= 1) return;
+        StateHistory.RemoveAt(StateHistory.Count - 1);
+        if (turn_remain > -1) turn_remain++;
+        refreshRemain();
+        targetRotation = StateHistory[StateHistory.Count - 1].stageRotation;
+        PlayerObject.transform.localPosition = StateHistory[StateHistory.Count - 1].position;
+    }
+#if UNITY_ANDROID
+    public void ShowRewardedAd()
+    {
+        if (Advertisement.IsReady("rewardedVideo"))
+        {
+            var options = new ShowOptions { resultCallback = HandleShowResult };
+            Advertisement.Show("rewardedVideo", options);
+        }else
+        {
+            Debug.Log("Advertisement is not ready");
+        }
+    }
+
+    private void HandleShowResult(ShowResult result)
+    {
+        switch (result)
+        {
+            case ShowResult.Finished:
+                turn_remain = -1;
+                refreshRemain();
+                GameOverPanel.SetActive(false);
+                perfectBonus = false;
+                Debug.Log("The ad was successfully shown.");
+                //
+                // YOUR CODE TO REWARD THE GAMER
+                // Give coins etc.
+                break;
+            case ShowResult.Skipped:
+                Debug.Log("The ad was skipped before reaching the end.");
+                break;
+            case ShowResult.Failed:
+                Debug.LogError("The ad failed to be shown.");
+                break;
+        }
+    }
+#endif
 }
