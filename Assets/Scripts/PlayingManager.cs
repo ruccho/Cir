@@ -132,6 +132,7 @@ public class PlayingManager : MonoBehaviour
                 break;
         }
 
+
         //フェードアウト
         FadeImage.GetComponent<Fade>().FadeOut(FadeTimeSeconds);
     }

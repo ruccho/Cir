@@ -212,7 +212,7 @@ public class StageCreation : MonoBehaviour
         }
         Stage.StageText = saveStageText;
         PlayerPrefs.SetString("CurrentEditingStageQuery", Query.generateQuery(saveStageText, Stage.StageTitle, Stage.StageDescription, Stage.StageTurnCount));
-        PlayerPrefs.SetInt("isTested", 0);
+        //PlayerPrefs.SetInt("isTested", 0);
     }
     public void TestPlay()
     {
@@ -271,11 +271,20 @@ public class StageCreation : MonoBehaviour
             ErrorDialog.GetComponent<ErrorDialog>().OpenDialog("タイトルもしくは説明が未入力です。");
             return;
         }
+        /*
         if (PlayerPrefs.GetInt("isTested") == 0)
         {
             ErrorDialog.GetComponent<ErrorDialog>().OpenDialog("最後にもう一度テストプレイでクリアしてください。");
             return;
         }
+        */
+        UTJ.Board board = new UTJ.Board(Stage);
+        if (board.isSolvable() != null)
+        {
+            ErrorDialog.GetComponent<ErrorDialog>().OpenDialog(board.isSolvable());
+            return;
+        }
+
         SceneManager.LoadScene("Publish");
 
     }

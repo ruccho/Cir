@@ -194,7 +194,7 @@ public class TweetGet : MonoBehaviour
                 for (int i = 0; i < searchedJson.GetField("statuses").Count; i++)
                 {
                     Tweet tempTweet = new Tweet(searchedJson.GetField("statuses").list[i]);
-                if (tempTweet.Stage.isValid == true)
+                if (tempTweet.Stage.isValid == true && new UTJ.Board(tempTweet.Stage).isSolvable() == null)
                     {
                         tweetQueue.Add(tempTweet);
                     //lastId = (Double.Parse(tempTweet.TweetId) - 1).ToString();

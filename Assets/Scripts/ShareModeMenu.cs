@@ -60,6 +60,11 @@ public class ShareModeMenu : MonoBehaviour {
             ErrorDialog.GetComponent<ErrorDialog>().OpenDialog(Query.checkStageCorrection(new StageStruct(CodeInput.GetComponent<InputField>().text), false));
             return;
         }
+        if (new UTJ.Board(new StageStruct(PlayerPrefs.GetString("CurrentStageQuery"))).isSolvable() != null)
+        {
+            ErrorDialog.GetComponent<ErrorDialog>().OpenDialog(new UTJ.Board(new StageStruct(PlayerPrefs.GetString("CurrentStageQuery"))).isSolvable());
+            return;
+        }
         PlayerPrefs.SetString("CurrentStageQuery", CodeInput.GetComponent<InputField>().text);
         PlayerPrefs.SetString("CurrentStageInfo", "CODE");
         SceneManager.LoadScene("Play");
