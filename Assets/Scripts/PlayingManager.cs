@@ -74,7 +74,7 @@ public class PlayingManager : MonoBehaviour
     }
     void Awake()
     {
-#if UNITY_ADROID
+#if (UNITY_ANDROID || UNITY_IOS)
         Advertisement.Initialize("1152993");
 #endif
     }
@@ -359,11 +359,24 @@ public class PlayingManager : MonoBehaviour
     {
         if (turn_remain <= -1)
         {
-            RemainTurnText.GetComponent<Text>().text = "回数制限なし";
+            if (Application.systemLanguage == SystemLanguage.Japanese)
+            {
+                RemainTurnText.GetComponent<Text>().text = "回数制限なし";
+            }else
+            {
+                RemainTurnText.GetComponent<Text>().text = "No limit";
+            }
         }
         else
         {
-            RemainTurnText.GetComponent<Text>().text = "あと" + turn_remain.ToString() + "回";
+            if(Application.systemLanguage == SystemLanguage.Japanese)
+            {
+                RemainTurnText.GetComponent<Text>().text = "あと" + turn_remain.ToString() + "回";
+            }
+            else
+            {
+                RemainTurnText.GetComponent<Text>().text = "remaining: " + turn_remain.ToString();
+            }
         }
     }
     void GameOverCheck()
@@ -387,7 +400,7 @@ public class PlayingManager : MonoBehaviour
         targetRotation = StateHistory[StateHistory.Count - 1].stageRotation;
         PlayerObject.transform.localPosition = StateHistory[StateHistory.Count - 1].position;
     }
-#if UNITY_ANDROID
+#if (UNITY_ANDROID || UNITY_IOS)
     public void ShowRewardedAd()
     {
         if (Advertisement.IsReady("rewardedVideo"))

@@ -100,6 +100,7 @@ GameObject:
   - 224: {fileID: 205693545}
   - 222: {fileID: 205693547}
   - 114: {fileID: 205693546}
+  - 114: {fileID: 205693548}
   m_Layer: 5
   m_Name: Text (1)
   m_TagString: Untagged
@@ -164,6 +165,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 205693544}
+--- !u!114 &205693548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 205693544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1556364fe32b2745a1c0a4caeda6286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Settings: {fileID: 11400000, guid: 047b86478434aae4c94d28aacb9446d8, type: 2}
+  table:
+    list:
+    - Lang: 10
+      Text: 'You can play
+
+        pre-installed stages.'
+    - Lang: 22
+      Text: "\u3042\u3089\u304B\u3058\u3081\u7528\u610F\u3055\u308C\u305F\u30B9\u30C6\u30FC\u30B8\u3067\n\u904A\u3079\u307E\u3059\u3002"
 --- !u!1001 &229206976
 Prefab:
   m_ObjectHideFlags: 0
@@ -268,6 +289,7 @@ GameObject:
   - 224: {fileID: 288065994}
   - 222: {fileID: 288065996}
   - 114: {fileID: 288065995}
+  - 114: {fileID: 288065997}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -290,8 +312,8 @@ RectTransform:
   m_RootOrder: 5
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -16.7, y: 151.8}
-  m_SizeDelta: {x: 258.8, y: 48.2}
+  m_AnchoredPosition: {x: 9.8, y: 151.8}
+  m_SizeDelta: {x: 311.9, y: 48.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &288065995
 MonoBehaviour:
@@ -316,7 +338,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: a2b102b7f7b75462cb0312838f7f81be, type: 3}
     m_FontSize: 47
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 47
     m_Alignment: 0
@@ -332,6 +354,24 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 288065993}
+--- !u!114 &288065997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 288065993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1556364fe32b2745a1c0a4caeda6286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Settings: {fileID: 11400000, guid: 047b86478434aae4c94d28aacb9446d8, type: 2}
+  table:
+    list:
+    - Lang: 10
+      Text: Mode Select
+    - Lang: 22
+      Text: "\u30E2\u30FC\u30C9\u30BB\u30EC\u30AF\u30C8"
 --- !u!1 &336490214
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,6 +456,7 @@ GameObject:
   - 224: {fileID: 389834419}
   - 222: {fileID: 389834421}
   - 114: {fileID: 389834420}
+  - 114: {fileID: 389834422}
   m_Layer: 5
   m_Name: Text (2)
   m_TagString: Untagged
@@ -480,6 +521,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 389834418}
+--- !u!114 &389834422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 389834418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1556364fe32b2745a1c0a4caeda6286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Settings: {fileID: 11400000, guid: 047b86478434aae4c94d28aacb9446d8, type: 2}
+  table:
+    list:
+    - Lang: 22
+      Text: "\u30B9\u30C6\u30FC\u30B8\u3092\u3064\u304F\u3063\u3066Twitter\u306B\u6295\u7A3F\u3057\u305F\u308A\u3001\n\u6295\u7A3F\u3055\u308C\u305F\u30B9\u30C6\u30FC\u30B8\u3067\u904A\u3093\u3060\u308A\u3067\u304D\u307E\u3059\u3002"
+    - Lang: 10
+      Text: 'You can create your original stages
+
+        and play stages someones'' posted.'
 --- !u!1 &424378359
 GameObject:
   m_ObjectHideFlags: 0
@@ -702,6 +763,7 @@ GameObject:
   - 224: {fileID: 747308204}
   - 222: {fileID: 747308206}
   - 114: {fileID: 747308205}
+  - 114: {fileID: 747308207}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -766,6 +828,24 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 747308203}
+--- !u!114 &747308207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 747308203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1556364fe32b2745a1c0a4caeda6286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Settings: {fileID: 11400000, guid: 047b86478434aae4c94d28aacb9446d8, type: 2}
+  table:
+    list:
+    - Lang: 10
+      Text: Play Offline
+    - Lang: 22
+      Text: "\u30ED\u30FC\u30AB\u30EB\u30E2\u30FC\u30C9"
 --- !u!1 &829088121
 GameObject:
   m_ObjectHideFlags: 0
@@ -1088,8 +1168,8 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -42.7, y: -54.8}
-  m_SizeDelta: {x: 218, y: 35}
+  m_AnchoredPosition: {x: -19.500008, y: -54.800003}
+  m_SizeDelta: {x: 264.4, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1051480998
 MonoBehaviour:
@@ -1994,6 +2074,7 @@ GameObject:
   - 224: {fileID: 1868166678}
   - 222: {fileID: 1868166680}
   - 114: {fileID: 1868166679}
+  - 114: {fileID: 1868166681}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -2058,6 +2139,24 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1868166677}
+--- !u!114 &1868166681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1868166677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1556364fe32b2745a1c0a4caeda6286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Settings: {fileID: 11400000, guid: 047b86478434aae4c94d28aacb9446d8, type: 2}
+  table:
+    list:
+    - Lang: 10
+      Text: Play Online
+    - Lang: 22
+      Text: "\u30AA\u30F3\u30E9\u30A4\u30F3\u30E2\u30FC\u30C9"
 --- !u!1 &1885754349
 GameObject:
   m_ObjectHideFlags: 0
@@ -2083,7 +2182,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1885754349}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.6}
+  m_LocalPosition: {x: 0, y: 0, z: 0.60003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -2092,8 +2191,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -42.3, y: 79.9}
-  m_SizeDelta: {x: 218, y: 35}
+  m_AnchoredPosition: {x: -19.299995, y: 79.9}
+  m_SizeDelta: {x: 264, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1885754351
 MonoBehaviour:

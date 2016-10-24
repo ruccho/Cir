@@ -2069,6 +2069,7 @@ GameObject:
   - 224: {fileID: 200113072}
   - 222: {fileID: 200113074}
   - 114: {fileID: 200113073}
+  - 114: {fileID: 200113075}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -2133,6 +2134,24 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 200113071}
+--- !u!114 &200113075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 200113071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1556364fe32b2745a1c0a4caeda6286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Settings: {fileID: 11400000, guid: 047b86478434aae4c94d28aacb9446d8, type: 2}
+  table:
+    list:
+    - Lang: 22
+      Text: "\u306F\u3058\u3081\u308B"
+    - Lang: 10
+      Text: Get Started
 --- !u!1 &259778954
 GameObject:
   m_ObjectHideFlags: 0
@@ -2143,6 +2162,7 @@ GameObject:
   - 224: {fileID: 259778955}
   - 222: {fileID: 259778957}
   - 114: {fileID: 259778956}
+  - 114: {fileID: 259778958}
   m_Layer: 0
   m_Name: Text2 (2)
   m_TagString: Untagged
@@ -2207,6 +2227,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 259778954}
+--- !u!114 &259778958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 259778954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1556364fe32b2745a1c0a4caeda6286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Settings: {fileID: 11400000, guid: 047b86478434aae4c94d28aacb9446d8, type: 2}
+  table:
+    list:
+    - Lang: 22
+      Text: "\u592A\u967D\u304C\u6563\u308A\u6563\u308A\u306B\u5206\u88C2\u3057\u3066\u3001\n\u7BB1\u306E\u4E2D\u3078\u3068\u56DA\u308F\u308C\u3066\u3057\u307E\u3063\u305F\u3002"
+    - Lang: 10
+      Text: 'The sun had been split,
+
+        and caught into the box.'
 --- !u!1 &311905534
 GameObject:
   m_ObjectHideFlags: 0
@@ -2304,6 +2344,7 @@ GameObject:
   - 224: {fileID: 335138388}
   - 222: {fileID: 335138390}
   - 114: {fileID: 335138389}
+  - 114: {fileID: 335138391}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -2368,6 +2409,24 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 335138387}
+--- !u!114 &335138391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 335138387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1556364fe32b2745a1c0a4caeda6286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Settings: {fileID: 11400000, guid: 047b86478434aae4c94d28aacb9446d8, type: 2}
+  table:
+    list:
+    - Lang: 10
+      Text: SUMMER IS COMING!!
+    - Lang: 22
+      Text: "\u4E16\u306F\u590F\u771F\u3063\u76DB\u308A\uFF01"
 --- !u!1 &337764594
 GameObject:
   m_ObjectHideFlags: 0
@@ -2610,6 +2669,7 @@ GameObject:
   - 224: {fileID: 622600436}
   - 222: {fileID: 622600438}
   - 114: {fileID: 622600437}
+  - 114: {fileID: 622600439}
   m_Layer: 0
   m_Name: Text2
   m_TagString: Untagged
@@ -2674,6 +2734,24 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 622600435}
+--- !u!114 &622600439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 622600435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1556364fe32b2745a1c0a4caeda6286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Settings: {fileID: 11400000, guid: 047b86478434aae4c94d28aacb9446d8, type: 2}
+  table:
+    list:
+    - Lang: 22
+      Text: "\u4EBA\u3005\u306F\u305D\u308C\u305E\u308C\u306E\u590F\u3092\n\u697D\u3057\u3093\u3067\u3044\u305F\u3002"
+    - Lang: 10
+      Text: People are enjoying summer.
 --- !u!1 &647260441
 GameObject:
   m_ObjectHideFlags: 0
@@ -2942,6 +3020,7 @@ GameObject:
   - 224: {fileID: 1089020471}
   - 222: {fileID: 1089020473}
   - 114: {fileID: 1089020472}
+  - 114: {fileID: 1089020474}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -3006,6 +3085,24 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1089020470}
+--- !u!114 &1089020474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1089020470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1556364fe32b2745a1c0a4caeda6286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Settings: {fileID: 11400000, guid: 047b86478434aae4c94d28aacb9446d8, type: 2}
+  table:
+    list:
+    - Lang: 10
+      Text: See Howto
+    - Lang: 22
+      Text: "\u3042\u305D\u3073\u304B\u305F\u3092\u898B\u308B"
 --- !u!1 &1093918213
 GameObject:
   m_ObjectHideFlags: 0
@@ -3423,6 +3520,7 @@ GameObject:
   - 224: {fileID: 2015111125}
   - 222: {fileID: 2015111127}
   - 114: {fileID: 2015111126}
+  - 114: {fileID: 2015111128}
   m_Layer: 0
   m_Name: Text (1)
   m_TagString: Untagged
@@ -3487,6 +3585,32 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2015111124}
+--- !u!114 &2015111128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2015111124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1556364fe32b2745a1c0a4caeda6286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Settings: {fileID: 11400000, guid: 047b86478434aae4c94d28aacb9446d8, type: 2}
+  table:
+    list:
+    - Lang: 22
+      Text: "\u3053\u306E\u4E8B\u4EF6\u3067\u3001\u4E16\u754C\u304B\u3089\u306F\n\u5F69\u304C\u5931\u308F\u308C\u3066\u3057\u307E\u3063\u305F\u3002\n\u6563\u3089\u3070\u3063\u305F\u592A\u967D\u3092\u3001\n\u306A\u3093\u3068\u304B\u596A\u53D6\u3059\u308B\u3053\u3068\u306F\n\u3067\u304D\u306A\u3044\u3060\u308D\u3046\u304B\u2015\u2015\u2015\u2015\u2015"
+    - Lang: 10
+      Text: 'In this case, the color
+
+        has been lost
+
+        from the world.
+
+        Not be able to
+
+        regain the sun?'
 --- !u!1 &2058550935
 GameObject:
   m_ObjectHideFlags: 0
@@ -3559,6 +3683,7 @@ GameObject:
   - 224: {fileID: 2106682253}
   - 222: {fileID: 2106682255}
   - 114: {fileID: 2106682254}
+  - 114: {fileID: 2106682256}
   m_Layer: 0
   m_Name: Text2 (1)
   m_TagString: Untagged
@@ -3623,6 +3748,24 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2106682252}
+--- !u!114 &2106682256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2106682252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1556364fe32b2745a1c0a4caeda6286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Settings: {fileID: 11400000, guid: 047b86478434aae4c94d28aacb9446d8, type: 2}
+  table:
+    list:
+    - Lang: 22
+      Text: "\u3057\u304B\u3057\u3042\u308B\u65E5\u2015\u2015\u2015\u2015"
+    - Lang: 10
+      Text: However...
 --- !u!1 &2122420075
 GameObject:
   m_ObjectHideFlags: 0

@@ -85,6 +85,9 @@
     <Compile Include="Assets\JSON\JSONObject.cs" />
     <Compile Include="Assets\JSON\JSONTemplates.cs" />
     <Compile Include="Assets\JSON\VectorTemplates.cs" />
+    <Compile Include="Assets\Ruccho\Localizer\LocalizeSettings.cs" />
+    <Compile Include="Assets\Ruccho\Localizer\SerializableDictionary.cs" />
+    <Compile Include="Assets\Ruccho\Localizer\TextLocalizer.cs" />
     <Compile Include="Assets\Scripts\Board.cs" />
     <Compile Include="Assets\Scripts\CircleButton.cs" />
     <Compile Include="Assets\Scripts\CreationMoveButton.cs" />

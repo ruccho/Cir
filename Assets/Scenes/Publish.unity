@@ -308,6 +308,7 @@ GameObject:
   - 224: {fileID: 410537479}
   - 222: {fileID: 410537481}
   - 114: {fileID: 410537480}
+  - 114: {fileID: 410537482}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -372,6 +373,24 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 410537478}
+--- !u!114 &410537482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 410537478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1556364fe32b2745a1c0a4caeda6286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Settings: {fileID: 11400000, guid: 047b86478434aae4c94d28aacb9446d8, type: 2}
+  table:
+    list:
+    - Lang: 10
+      Text: Copy to Clipboard
+    - Lang: 22
+      Text: "\u30B3\u30D4\u30FC\u3059\u308B"
 --- !u!1 &413294600
 GameObject:
   m_ObjectHideFlags: 0
@@ -1240,6 +1259,7 @@ GameObject:
   - 224: {fileID: 1086005366}
   - 222: {fileID: 1086005368}
   - 114: {fileID: 1086005367}
+  - 114: {fileID: 1086005369}
   m_Layer: 5
   m_Name: Text (1)
   m_TagString: Untagged
@@ -1304,6 +1324,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1086005365}
+--- !u!114 &1086005369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1086005365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1556364fe32b2745a1c0a4caeda6286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Settings: {fileID: 11400000, guid: 047b86478434aae4c94d28aacb9446d8, type: 2}
+  table:
+    list:
+    - Lang: 10
+      Text: 'Convert to URL
+
+        and post to everywhere.'
+    - Lang: 22
+      Text: "URL\u5316\u3057\u3066\u3001\u304A\u597D\u304D\u306A\u5834\u6240\u306B\n\u8CBC\u308A\u4ED8\u3051\u3066\u304F\u3060\u3055\u3044\u3002"
 --- !u!1 &1119778494
 GameObject:
   m_ObjectHideFlags: 0
@@ -1974,6 +2014,7 @@ GameObject:
   - 224: {fileID: 1560207550}
   - 222: {fileID: 1560207552}
   - 114: {fileID: 1560207551}
+  - 114: {fileID: 1560207553}
   m_Layer: 5
   m_Name: Text (1)
   m_TagString: Untagged
@@ -2038,6 +2079,24 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1560207549}
+--- !u!114 &1560207553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1560207549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1556364fe32b2745a1c0a4caeda6286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Settings: {fileID: 11400000, guid: 047b86478434aae4c94d28aacb9446d8, type: 2}
+  table:
+    list:
+    - Lang: 10
+      Text: "Stages posted to Twitter \nwill be searched from this game."
+    - Lang: 22
+      Text: "Twitter\u306B\u6295\u7A3F\u3057\u305F\u30B9\u30C6\u30FC\u30B8\u306F\u3001\n\u30B9\u30C6\u30FC\u30B8\u691C\u7D22\u306B\u30D2\u30C3\u30C8\u3057\u307E\u3059\u3002"
 --- !u!1 &1569592011
 GameObject:
   m_ObjectHideFlags: 0
@@ -2546,6 +2605,7 @@ GameObject:
   - 224: {fileID: 1904150202}
   - 222: {fileID: 1904150204}
   - 114: {fileID: 1904150203}
+  - 114: {fileID: 1904150205}
   m_Layer: 5
   m_Name: Text (1)
   m_TagString: Untagged
@@ -2610,6 +2670,24 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1904150201}
+--- !u!114 &1904150205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1904150201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1556364fe32b2745a1c0a4caeda6286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Settings: {fileID: 11400000, guid: 047b86478434aae4c94d28aacb9446d8, type: 2}
+  table:
+    list:
+    - Lang: 22
+      Text: "\u958B\u304F\u3053\u3068\u3067\u30B9\u30C6\u30FC\u30B8\u3092\u30D7\u30EC\u30A4\u3067\u304D\u308B\nURL\u3092\u751F\u6210\u3057\u307E\u3057\u305F\u3002\n\u304A\u597D\u304D\u306A\u5834\u6240\u306B\u8CBC\u308A\u4ED8\u3051\u3066\u304F\u3060\u3055\u3044\u3002"
+    - Lang: 10
+      Text: 
 --- !u!1 &1905969648
 GameObject:
   m_ObjectHideFlags: 0
@@ -2964,6 +3042,7 @@ GameObject:
   - 224: {fileID: 2051585068}
   - 222: {fileID: 2051585070}
   - 114: {fileID: 2051585069}
+  - 114: {fileID: 2051585071}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -3028,3 +3107,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2051585067}
+--- !u!114 &2051585071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2051585067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1556364fe32b2745a1c0a4caeda6286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Settings: {fileID: 11400000, guid: 047b86478434aae4c94d28aacb9446d8, type: 2}
+  table:
+    list:
+    - Lang: 10
+      Text: Post to...
+    - Lang: 22
+      Text: "\u30B9\u30C6\u30FC\u30B8\u30D1\u30D6\u30EA\u30C3\u30B7\u30E5"

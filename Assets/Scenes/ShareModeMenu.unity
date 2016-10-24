@@ -679,6 +679,7 @@ GameObject:
   - 224: {fileID: 322674446}
   - 222: {fileID: 322674448}
   - 114: {fileID: 322674447}
+  - 114: {fileID: 322674449}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -743,6 +744,24 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 322674445}
+--- !u!114 &322674449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 322674445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1556364fe32b2745a1c0a4caeda6286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Settings: {fileID: 11400000, guid: 047b86478434aae4c94d28aacb9446d8, type: 2}
+  table:
+    list:
+    - Lang: 10
+      Text: Enter the Code
+    - Lang: 22
+      Text: "\u30B9\u30C6\u30FC\u30B8\u30B3\u30FC\u30C9\u3092\u5165\u529B"
 --- !u!1 &347832776
 GameObject:
   m_ObjectHideFlags: 0
@@ -872,6 +891,7 @@ GameObject:
   - 224: {fileID: 396044208}
   - 222: {fileID: 396044210}
   - 114: {fileID: 396044209}
+  - 114: {fileID: 396044211}
   m_Layer: 0
   m_Name: Text (1)
   m_TagString: Untagged
@@ -936,6 +956,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 396044207}
+--- !u!114 &396044211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 396044207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1556364fe32b2745a1c0a4caeda6286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Settings: {fileID: 11400000, guid: 047b86478434aae4c94d28aacb9446d8, type: 2}
+  table:
+    list:
+    - Lang: 10
+      Text: 'Search stages
+
+        posted to Twitter'
+    - Lang: 22
+      Text: "Twitter\u306B\u6295\u7A3F\u3055\u308C\u305F\n\u30B9\u30C6\u30FC\u30B8\u3092\u691C\u7D22\u3057\u307E\u3059\u3002"
 --- !u!1 &559316321
 GameObject:
   m_ObjectHideFlags: 0
@@ -1400,6 +1440,7 @@ GameObject:
   - 224: {fileID: 1104231157}
   - 222: {fileID: 1104231159}
   - 114: {fileID: 1104231158}
+  - 114: {fileID: 1104231160}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -1464,6 +1505,24 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1104231156}
+--- !u!114 &1104231160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1104231156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1556364fe32b2745a1c0a4caeda6286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Settings: {fileID: 11400000, guid: 047b86478434aae4c94d28aacb9446d8, type: 2}
+  table:
+    list:
+    - Lang: 22
+      Text: "\u30AA\u30F3\u30E9\u30A4\u30F3\u30E2\u30FC\u30C9"
+    - Lang: 10
+      Text: Play Online
 --- !u!1 &1119588412
 GameObject:
   m_ObjectHideFlags: 0
@@ -1474,6 +1533,7 @@ GameObject:
   - 224: {fileID: 1119588413}
   - 222: {fileID: 1119588415}
   - 114: {fileID: 1119588414}
+  - 114: {fileID: 1119588416}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -1538,6 +1598,24 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1119588412}
+--- !u!114 &1119588416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1119588412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1556364fe32b2745a1c0a4caeda6286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Settings: {fileID: 11400000, guid: 047b86478434aae4c94d28aacb9446d8, type: 2}
+  table:
+    list:
+    - Lang: 10
+      Text: Enter the Code
+    - Lang: 22
+      Text: "\u30B9\u30C6\u30FC\u30B8\u30B3\u30FC\u30C9"
 --- !u!1 &1120997275
 GameObject:
   m_ObjectHideFlags: 0
@@ -1548,6 +1626,7 @@ GameObject:
   - 224: {fileID: 1120997276}
   - 222: {fileID: 1120997278}
   - 114: {fileID: 1120997277}
+  - 114: {fileID: 1120997279}
   m_Layer: 0
   m_Name: Text (1)
   m_TagString: Untagged
@@ -1612,6 +1691,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1120997275}
+--- !u!114 &1120997279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1120997275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1556364fe32b2745a1c0a4caeda6286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Settings: {fileID: 11400000, guid: 047b86478434aae4c94d28aacb9446d8, type: 2}
+  table:
+    list:
+    - Lang: 10
+      Text: 'You can create/post
+
+        your original stages'
+    - Lang: 22
+      Text: "\u30AA\u30EA\u30B8\u30CA\u30EB\u306E\u30B9\u30C6\u30FC\u30B8\u3092\u4F5C\u3063\u3066\n\u6295\u7A3F\u3067\u304D\u307E\u3059\u3002"
 --- !u!1 &1250585344
 GameObject:
   m_ObjectHideFlags: 0
@@ -1764,6 +1863,7 @@ GameObject:
   - 224: {fileID: 1287968964}
   - 222: {fileID: 1287968966}
   - 114: {fileID: 1287968965}
+  - 114: {fileID: 1287968967}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -1828,6 +1928,24 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1287968963}
+--- !u!114 &1287968967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1287968963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1556364fe32b2745a1c0a4caeda6286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Settings: {fileID: 11400000, guid: 047b86478434aae4c94d28aacb9446d8, type: 2}
+  table:
+    list:
+    - Lang: 10
+      Text: Search Stages
+    - Lang: 22
+      Text: "\u30B9\u30C6\u30FC\u30B8\u30B3\u30FC\u30C9"
 --- !u!1 &1576818268
 GameObject:
   m_ObjectHideFlags: 0
@@ -2164,6 +2282,7 @@ GameObject:
   - 224: {fileID: 1859800498}
   - 222: {fileID: 1859800500}
   - 114: {fileID: 1859800499}
+  - 114: {fileID: 1859800501}
   m_Layer: 0
   m_Name: Text (1)
   m_TagString: Untagged
@@ -2228,6 +2347,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1859800497}
+--- !u!114 &1859800501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1859800497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1556364fe32b2745a1c0a4caeda6286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Settings: {fileID: 11400000, guid: 047b86478434aae4c94d28aacb9446d8, type: 2}
+  table:
+    list:
+    - Lang: 10
+      Text: 'Play the stage
+
+        by entering the code'
+    - Lang: 22
+      Text: "URL/\u30B9\u30C6\u30FC\u30B8\u30B3\u30FC\u30C9\u3092\u5165\u529B\u3057\u3066\n\u30D7\u30EC\u30A4\u3057\u307E\u3059\u3002"
 --- !u!1 &1952862048
 GameObject:
   m_ObjectHideFlags: 0
@@ -2238,6 +2377,7 @@ GameObject:
   - 224: {fileID: 1952862049}
   - 222: {fileID: 1952862051}
   - 114: {fileID: 1952862050}
+  - 114: {fileID: 1952862052}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -2302,6 +2442,24 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1952862048}
+--- !u!114 &1952862052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1952862048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1556364fe32b2745a1c0a4caeda6286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Settings: {fileID: 11400000, guid: 047b86478434aae4c94d28aacb9446d8, type: 2}
+  table:
+    list:
+    - Lang: 10
+      Text: Create
+    - Lang: 22
+      Text: "\u30AF\u30EA\u30A8\u30A4\u30C8"
 --- !u!1 &1981605545
 GameObject:
   m_ObjectHideFlags: 0

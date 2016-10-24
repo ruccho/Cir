@@ -100,6 +100,7 @@ GameObject:
   - 224: {fileID: 624360}
   - 222: {fileID: 624362}
   - 114: {fileID: 624361}
+  - 114: {fileID: 624363}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -164,6 +165,24 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 624359}
+--- !u!114 &624363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 624359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1556364fe32b2745a1c0a4caeda6286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Settings: {fileID: 11400000, guid: 047b86478434aae4c94d28aacb9446d8, type: 2}
+  table:
+    list:
+    - Lang: 10
+      Text: Edit Detail
+    - Lang: 22
+      Text: "\u30B9\u30C6\u30FC\u30B8\u60C5\u5831\u3092\u7DE8\u96C6\u3059\u308B"
 --- !u!224 &18397374 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224000010750072830, guid: b106303f61649cd46a99cc8bacb22c54,
@@ -268,6 +287,7 @@ GameObject:
   - 224: {fileID: 257334892}
   - 222: {fileID: 257334894}
   - 114: {fileID: 257334893}
+  - 114: {fileID: 257334895}
   m_Layer: 0
   m_Name: Text (2)
   m_TagString: Untagged
@@ -332,6 +352,24 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 257334891}
+--- !u!114 &257334895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 257334891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1556364fe32b2745a1c0a4caeda6286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Settings: {fileID: 11400000, guid: 047b86478434aae4c94d28aacb9446d8, type: 2}
+  table:
+    list:
+    - Lang: 10
+      Text: Stage you created has been saved!
+    - Lang: 22
+      Text: "(\u5236\u4F5C\u3057\u305F\u30B9\u30C6\u30FC\u30B8\u306F\u81EA\u52D5\u7684\u306B\u4FDD\u5B58\u3055\u308C\u3066\u3044\u307E\u3059)"
 --- !u!1001 &264783941
 Prefab:
   m_ObjectHideFlags: 0
@@ -1274,6 +1312,7 @@ GameObject:
   - 224: {fileID: 485174034}
   - 222: {fileID: 485174036}
   - 114: {fileID: 485174035}
+  - 114: {fileID: 485174037}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -1338,6 +1377,24 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 485174033}
+--- !u!114 &485174037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 485174033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1556364fe32b2745a1c0a4caeda6286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Settings: {fileID: 11400000, guid: 047b86478434aae4c94d28aacb9446d8, type: 2}
+  table:
+    list:
+    - Lang: 10
+      Text: Post to...
+    - Lang: 22
+      Text: "URL\u5316\u30FB\u6295\u7A3F\u3059\u308B"
 --- !u!1 &492695713
 GameObject:
   m_ObjectHideFlags: 0
@@ -4153,6 +4210,7 @@ GameObject:
   - 224: {fileID: 1431192251}
   - 222: {fileID: 1431192253}
   - 114: {fileID: 1431192252}
+  - 114: {fileID: 1431192254}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -4217,6 +4275,24 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1431192250}
+--- !u!114 &1431192254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1431192250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1556364fe32b2745a1c0a4caeda6286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Settings: {fileID: 11400000, guid: 047b86478434aae4c94d28aacb9446d8, type: 2}
+  table:
+    list:
+    - Lang: 10
+      Text: Back to Online-menu
+    - Lang: 22
+      Text: "\u30AA\u30F3\u30E9\u30A4\u30F3\u30E2\u30FC\u30C9\u30E1\u30CB\u30E5\u30FC\u306B\u623B\u308B"
 --- !u!1 &1460584893
 GameObject:
   m_ObjectHideFlags: 0

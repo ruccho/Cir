@@ -3210,6 +3210,7 @@ GameObject:
   - 224: {fileID: 2117281341}
   - 222: {fileID: 2117281343}
   - 114: {fileID: 2117281342}
+  - 114: {fileID: 2117281344}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -3274,6 +3275,24 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2117281340}
+--- !u!114 &2117281344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2117281340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1556364fe32b2745a1c0a4caeda6286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Settings: {fileID: 11400000, guid: 047b86478434aae4c94d28aacb9446d8, type: 2}
+  table:
+    list:
+    - Lang: 10
+      Text: Stage Select
+    - Lang: 22
+      Text: "\u30B9\u30C6\u30FC\u30B8\u30BB\u30EC\u30AF\u30C8"
 --- !u!1001 &2118522593
 Prefab:
   m_ObjectHideFlags: 0

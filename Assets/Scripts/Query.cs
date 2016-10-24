@@ -46,16 +46,36 @@ public class Query/* : MonoBehaviour*/
     {
         if(Stage.isValid == false)
         {
-            return "コードの構文に誤りがあります。コードが壊れている可能性があります。(isValid==false)";
+            if (Application.systemLanguage == SystemLanguage.Japanese)
+            {
+                return "コードの構文に誤りがあります。コードが壊れている可能性があります。";
+            }else
+            {
+                return "Structure of the code is wrong. It may be broken.";
+            }
         }
         if (Stage.StageBody.Length - Stage.StageBody.Replace('3'.ToString(), "").Length != 1)
         {
             switch (isEditMode)
             {
                 case true:
-                    return "プレイヤー開始地点が2つ以上あるかまたは1つもありません。";
+                    if (Application.systemLanguage == SystemLanguage.Japanese)
+                    {
+                        return "プレイヤー開始地点が2つ以上あるかまたは1つもありません。";
+                    }
+                    else
+                    {
+                        return "There are no goal or more than two goals.";
+                    }
                 case false:
-                    return "コードの構文に誤りがあります。コードが壊れている可能性があります。";
+                    if (Application.systemLanguage == SystemLanguage.Japanese)
+                    {
+                        return "コードの構文に誤りがあります。コードが壊れている可能性があります。";
+                    }
+                    else
+                    {
+                        return "Structure of the code is wrong. It may be broken.";
+                    }
             }
         }
         if (Stage.StageBody.Length - Stage.StageBody.Replace('4'.ToString(), "").Length == 0)
@@ -63,9 +83,23 @@ public class Query/* : MonoBehaviour*/
             switch (isEditMode)
             {
                 case true:
-                    return "ゴールが配置されていません。";
+                    if (Application.systemLanguage == SystemLanguage.Japanese)
+                    {
+                        return "ゴールが配置されていません。";
+                    }
+                    else
+                    {
+                        return "There is no goal.";
+                    }
                 case false:
-                    return "コードの構文に誤りがあります。コードが壊れている可能性があります。";
+                    if (Application.systemLanguage == SystemLanguage.Japanese)
+                    {
+                        return "コードの構文に誤りがあります。コードが壊れている可能性があります。";
+                    }
+                    else
+                    {
+                        return "Structure of the code is wrong. It may be broken.";
+                    }
             }
         }
         //5と6が、どっちもがないわけでも、どちらもあるわけでもない
@@ -74,9 +108,23 @@ public class Query/* : MonoBehaviour*/
             switch (isEditMode)
             {
                 case true:
-                    return "鍵とドアの配置に誤りがあります。鍵とドアは１組のみ配置でき、どちらかのみを配置することもできません。";
+                    if (Application.systemLanguage == SystemLanguage.Japanese)
+                    {
+                        return "鍵とドアの配置に誤りがあります。鍵とドアは１組のみ配置でき、どちらかのみを配置することもできません。";
+                    }
+                    else
+                    {
+                        return "There is an error in the placement of the key and the door. Key and the door can be placed only one set, you can not also be arranged only either";
+                    }
                 case false:
-                    return "コードの構文に誤りがあります。コードが壊れている可能性があります。";
+                    if (Application.systemLanguage == SystemLanguage.Japanese)
+                    {
+                        return "コードの構文に誤りがあります。コードが壊れている可能性があります。";
+                    }
+                    else
+                    {
+                        return "Structure of the code is wrong. It may be broken.";
+                    }
             }
 
         }
