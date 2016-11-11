@@ -42,6 +42,7 @@ public class PlayingManager : MonoBehaviour
     public GameObject RemainTurnText;
     public GameObject GameOverPanel;
     public GameObject BGMObject;
+    public float DefaultGravity;
 
     bool perfectBonus = true;
     struct PlayState
@@ -187,7 +188,7 @@ public class PlayingManager : MonoBehaviour
             //それ以外、つまり回転終了
             turningState = 0;
             tempRotation = targetRotation;
-            PlayerObject.GetComponent<Rigidbody2D>().gravityScale = 1;
+            PlayerObject.GetComponent<Rigidbody2D>().gravityScale = DefaultGravity;
             //回転終了からの時間を記録するタイマーを更新
             timerRotationFinished += Time.deltaTime;
 
