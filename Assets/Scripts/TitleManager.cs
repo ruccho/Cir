@@ -27,6 +27,22 @@ public class TitleManager : MonoBehaviour
             InfoButton.SetActive(false);
             PlayerPrefs.SetInt("ClearedPresetStageNumber", 0);
         }
+        if (!PlayerPrefs.HasKey("UndoNumber"))
+        {
+            PlayerPrefs.SetInt("UndoNumber", 0);
+        }
+        if (!PlayerPrefs.HasKey("WeightLevel"))
+        {
+            PlayerPrefs.SetInt("WeightLevel", 0);
+        }
+        if (!PlayerPrefs.HasKey("SpinLevel"))
+        {
+            PlayerPrefs.SetInt("SpinLevel", 0);
+        }
+        if (!PlayerPrefs.HasKey("Coin"))
+        {
+            PlayerPrefs.SetInt("Coin", 0);
+        }
         fadeManager = GameObject.Find("FadeManager").GetComponent<FadeManager>();
         TitleCanvas = TitleCanvasObject.GetComponent<Canvas>();
         ModeSelectCanvas = ModeSelectCanvasObject.GetComponent<Canvas>();

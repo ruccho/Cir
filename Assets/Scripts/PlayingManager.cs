@@ -42,7 +42,13 @@ public class PlayingManager : MonoBehaviour
     public GameObject RemainTurnText;
     public GameObject GameOverPanel;
     public GameObject BGMObject;
+    public GameObject ShopPrefab;
+    public Button UndoButton;
+    public Text UndoRemainText;
+    public Text CoinRemainText;
     public float DefaultGravity;
+
+    int score;
 
     bool perfectBonus = true;
     struct PlayState
@@ -83,6 +89,8 @@ public class PlayingManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        
+
         StateHistory = new List<PlayState>();
         RotateSEPlayed = false;
         CameraMode = CameraModeType.BIRDSEYE;
@@ -141,8 +149,17 @@ public class PlayingManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
+        DefaultGravity = 1 * Mathf.Pow(1.75f, PlayerPrefs.GetInt("WeightLevel"));
+        rotationPerFrame = 3 + (PlayerPrefs.GetInt("SpinLevel") * 0.5f);
+        UndoButton.interactable = (PlayerPrefs.GetInt("UndoNumber") != 0);
+        if (PlayerPrefs.GetInt("UndoNumber") > 1000)
+        {
+            UndoRemainText.text = "1000+";
+        }
+        else
+        {
+            UndoRemainText.text = PlayerPrefs.GetInt("UndoNumber").ToString();
+        }
         //落下中かをチェック
         //VelocityのYがマイナス（落下中）の時で判定
         isMoving = ((int)PlayerObject.GetComponent<Rigidbody2D>().velocity.y < 0);
@@ -322,6 +339,12 @@ public class PlayingManager : MonoBehaviour
         }
     }
 
+    public void Shop()
+    {
+        GetComponent<AudioSource>().PlayOneShot(Open);
+        Instantiate(ShopPrefab);
+     }
+
     public void Goal()
     {
         BGMObject.GetComponent<AudioSource>().enabled = false;
@@ -386,6 +409,13 @@ public class PlayingManager : MonoBehaviour
         if (turn_remain == 0)
         {
             Debug.Log("GAME OVER");
+            if(Application.systemLanguage == SystemLanguage.Japanese)
+            {
+                CoinRemainText.text = "所持　" + PlayerPrefs.GetInt("Coin").ToString();
+            }else
+            {
+                CoinRemainText.text = "Having　" + PlayerPrefs.GetInt("Coin").ToString();
+            }
             GameOverPanel.SetActive(true);
         }
     }
@@ -400,13 +430,57 @@ public class PlayingManager : MonoBehaviour
         refreshRemain();
         targetRotation = StateHistory[StateHistory.Count - 1].stageRotation;
         PlayerObject.transform.localPosition = StateHistory[StateHistory.Count - 1].position;
+        PlayerPrefs.SetInt("UndoNumber", PlayerPrefs.GetInt("UndoNumber") - 1);
     }
-#if (UNITY_ANDROID || UNITY_IOS)
-    public void ShowRewardedAd()
+
+    public void continueGame()
     {
-        if (Advertisement.IsReady("rewardedVideo"))
+        turn_remain = -1;
+        refreshRemain();
+        GameOverPanel.SetActive(false);
+        perfectBonus = false;
+        PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin") - 200);
+    }
+
+    public void Clear()
+    {
+        //クリアパネルでOK
+
+#if (UNITY_ANDROID || UNITY_IOS)
+        PlayerPrefs.SetInt("VideoCount", PlayerPrefs.GetInt("VideoCount") + 1);
+        if ((PlayerPrefs.GetInt("VideoCount", 0) >= 3) && (PlaySceneMode != PlaySceneModeType.TEST))
         {
-            var options = new ShowOptions { resultCallback = HandleShowResult };
+            if (Advertisement.IsReady("video"))
+            {
+                var options = new ShowOptions { resultCallback = HandleShowResultNormal };
+                Advertisement.Show("video", options);
+            }
+            else
+            {
+                Debug.Log("Advertisement is not ready");
+            }
+        }else
+        {
+            Quit();
+        }
+#else
+        
+        Quit();
+#endif
+    }
+
+
+#if (UNITY_ANDROID || UNITY_IOS)
+
+    public void RewardBonus()
+    {
+        if (PlaySceneMode == PlaySceneModeType.TEST)
+        {
+            return;
+        }
+            if (Advertisement.IsReady("rewardedVideo"))
+        {
+            var options = new ShowOptions { resultCallback = HandleShowResultReward };
             Advertisement.Show("rewardedVideo", options);
         }else
         {
@@ -414,15 +488,12 @@ public class PlayingManager : MonoBehaviour
         }
     }
 
-    private void HandleShowResult(ShowResult result)
+    private void HandleShowResultReward(ShowResult result)
     {
         switch (result)
         {
             case ShowResult.Finished:
-                turn_remain = -1;
-                refreshRemain();
-                GameOverPanel.SetActive(false);
-                perfectBonus = false;
+                score = score * 2;
                 Debug.Log("The ad was successfully shown.");
                 //
                 // YOUR CODE TO REWARD THE GAMER
@@ -430,6 +501,26 @@ public class PlayingManager : MonoBehaviour
                 break;
             case ShowResult.Skipped:
                 Debug.Log("The ad was skipped before reaching the end.");
+                break;
+            case ShowResult.Failed:
+                Debug.LogError("The ad failed to be shown.");
+                break;
+        }
+    }
+    private void HandleShowResultNormal(ShowResult result)
+    {
+        switch (result)
+        {
+            case ShowResult.Finished:
+                Debug.Log("The ad was successfully shown.");
+                PlayerPrefs.SetInt("VideoCount", 0);
+                //
+                // YOUR CODE TO REWARD THE GAMER
+                // Give coins etc.
+                break;
+            case ShowResult.Skipped:
+                Debug.Log("The ad was skipped before reaching the end.");
+                PlayerPrefs.SetInt("VideoCount", 0);
                 break;
             case ShowResult.Failed:
                 Debug.LogError("The ad failed to be shown.");
