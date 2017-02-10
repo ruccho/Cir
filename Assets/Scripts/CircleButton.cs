@@ -20,7 +20,7 @@ public class CircleButton : Button, ICanvasRaycastFilter
         RectTransformUtility.ScreenPointToLocalPointInRectangle(GetComponent<RectTransform>(), transform.position, Camera.main, out localPos);
         
 
-        Debug.Log("researching pos:(" + sp.ToString() + "),base pos:(" + (-(localPos)).ToString());
+        //Debug.Log("researching pos:(" + sp.ToString() + "),base pos:(" + (-(localPos)).ToString());
         return Vector2.Distance(sp, (-(localPos))) < radius;
     }
 }

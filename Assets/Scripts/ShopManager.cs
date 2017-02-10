@@ -44,7 +44,7 @@ public class ShopManager : MonoBehaviour {
     {
         CoinText.text = coin.ToString();
         CurrentUndoNumText.text = "現在の所持数：" + undoNum;
-        if(weightLev == 10)
+        if(weightLev == 5)
         {
             WeightLevelPanel.SetActive(false);
         }

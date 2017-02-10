@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f75d40cf09b15428c5a839b9096389, type: 3}
   m_Name: LocalizeSettings
   m_EditorClassIdentifier: 
-  isDebugging: 0
+  isDebugging: 1
   LangForDebug: 10
   DefaultLanguage: 10

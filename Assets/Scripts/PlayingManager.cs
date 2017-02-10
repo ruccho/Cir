@@ -21,7 +21,7 @@ public class PlayingManager : MonoBehaviour
     float tempRotation;
     public AudioClip RotateEnd;
     public AudioClip Open;
-
+    private int turned_count;
 
     bool RotateSEPlayed;
     bool isMoving = false;
@@ -47,6 +47,7 @@ public class PlayingManager : MonoBehaviour
     public Text UndoRemainText;
     public Text CoinRemainText;
     public float DefaultGravity;
+    public GameObject PaletteCanvas;
 
     int score;
 
@@ -242,6 +243,7 @@ public class PlayingManager : MonoBehaviour
         PlayerObject.GetComponent<Rigidbody2D>().gravityScale = 0;
         turningState = 1;
         targetRotation = tempRotation + 90;
+        turned_count++;
     }
     public void RotateRight()
     {
@@ -251,7 +253,7 @@ public class PlayingManager : MonoBehaviour
         PlayerObject.GetComponent<Rigidbody2D>().gravityScale = 0;
         turningState = -1;
         targetRotation = tempRotation - 90;
-
+        turned_count++;
     }
 
     float FixRotation(float rotation)
@@ -306,12 +308,14 @@ public class PlayingManager : MonoBehaviour
 
     public void OpenMenu()
     {
+        ChangerApplier.TurnOff();
         GetComponent<AudioSource>().PlayOneShot(Open);
         MenuPanel.SetActive(true);
     }
 
     public void CloseMenu()
     {
+        ChangerApplier.TurnOn();
         GetComponent<AudioSource>().PlayOneShot(Open);
         MenuPanel.SetActive(false);
     }
@@ -347,6 +351,7 @@ public class PlayingManager : MonoBehaviour
 
     public void Goal()
     {
+        ChangerApplier.TurnOff();
         BGMObject.GetComponent<AudioSource>().enabled = false;
         if (PlaySceneMode == PlaySceneModeType.PRESET)
         {
@@ -362,6 +367,26 @@ public class PlayingManager : MonoBehaviour
             PlayerPrefs.SetInt("isTested", 1);
         }
         ClearPanel.GetComponent<Animator>().SetTrigger("StageCleared");
+
+        //報酬を計算
+        UTJ.Board board = new UTJ.Board(new StageStruct(PlayerPrefs.GetString("CurrentStageQuery")));
+        if (board.isSolvable() == null)
+        {
+            int fewest_turns = board.TurnCount();
+            Debug.Log(fewest_turns.ToString() + "　手でクリア可能");
+            //計算
+            int rewardcoin = 0;
+            //基本報酬
+            rewardcoin = rewardcoin + (fewest_turns * 2);
+            //ゲームオーバーコンテニューペナルティ
+            rewardcoin = rewardcoin * (int)((perfectBonus == false) ? 0.8f : 1);
+            //最小手数クリア
+            rewardcoin = rewardcoin * (int)((fewest_turns == turned_count) ? 1.2f : 1);
+        }
+        else
+        {
+            Debug.Log("クリア不能");
+        }
     }
 
     public void ViewOnTwitter()
@@ -377,6 +402,14 @@ public class PlayingManager : MonoBehaviour
     public void CloseInfoPanel()
     {
         InfoPanel.SetActive(false);
+    }
+
+    public void OpenPalette()
+    {
+        ChangerApplier.TurnOn();
+        GetComponent<AudioSource>().PlayOneShot(Open);
+        MenuPanel.SetActive(false);
+        PaletteCanvas.SetActive(true);
     }
 
     void refreshRemain()
@@ -416,6 +449,7 @@ public class PlayingManager : MonoBehaviour
             {
                 CoinRemainText.text = "Having　" + PlayerPrefs.GetInt("Coin").ToString();
             }
+            ChangerApplier.TurnOff();
             GameOverPanel.SetActive(true);
         }
     }
@@ -431,10 +465,13 @@ public class PlayingManager : MonoBehaviour
         targetRotation = StateHistory[StateHistory.Count - 1].stageRotation;
         PlayerObject.transform.localPosition = StateHistory[StateHistory.Count - 1].position;
         PlayerPrefs.SetInt("UndoNumber", PlayerPrefs.GetInt("UndoNumber") - 1);
+        turned_count--;
     }
 
     public void continueGame()
     {
+        if (PlayerPrefs.GetInt("Coin") < 200) return;
+        ChangerApplier.TurnOn();
         turn_remain = -1;
         refreshRemain();
         GameOverPanel.SetActive(false);

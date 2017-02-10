@@ -18,6 +18,7 @@ public class TitleManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        ChangerApplier.TurnOn();
         if(Screen.height < 800)
         {
             ErrorDialog.GetComponent<ErrorDialog>().OpenDialog("スクリーンサイズが小さいため表示が崩れる場合があります。");

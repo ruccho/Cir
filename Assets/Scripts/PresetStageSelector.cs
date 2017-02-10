@@ -14,6 +14,7 @@ public class PresetStageSelector : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        ChangerApplier.TurnOn();
         fadeManager = GameObject.Find("FadeManager").GetComponent<FadeManager>();
         for(int i = 0; i < Buttons.Length - (PlayerPrefs.GetInt("ClearedPresetStageNumber") + 1); i++)
         {

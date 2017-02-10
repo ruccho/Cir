@@ -3,7 +3,7 @@
 [RequireComponent (typeof(UnityStandardAssets.ImageEffects.ColorCorrectionCurves))]
 public class ColorReplace : MonoBehaviour
 {
-    private Color ColorToReplaceObj = new Color(1, 1, 1);
+    private Color ColorToReplaceObj = new Color(0.75f, 0.75f, 0);
     private Color ColorToReplaceBg = new Color(0, 0, 0);
     UnityStandardAssets.ImageEffects.ColorCorrectionCurves ColorCorrectionCurveScript;
 
@@ -12,6 +12,12 @@ public class ColorReplace : MonoBehaviour
         ColorCorrectionCurveScript = GetComponent<UnityStandardAssets.ImageEffects.ColorCorrectionCurves>();
         refreshColor();
     }
+
+    void Update()
+    {
+
+    }
+
 
     public void refreshColor()
     {
@@ -29,8 +35,11 @@ public class ColorReplace : MonoBehaviour
             }
         }
         //適用
+        Debug.Log("Applying Color");
+        Debug.Log("BG-RED: " + ColorToReplaceBg.r.ToString());
         ColorCorrectionCurveScript.redChannel = new AnimationCurve(new Keyframe(0f, ColorToReplaceObj.r), new Keyframe(1f, ColorToReplaceBg.r));
         ColorCorrectionCurveScript.greenChannel = new AnimationCurve(new Keyframe(0f, ColorToReplaceObj.g), new Keyframe(1f, ColorToReplaceBg.g));
         ColorCorrectionCurveScript.blueChannel = new AnimationCurve(new Keyframe(0f, ColorToReplaceObj.b), new Keyframe(1f, ColorToReplaceBg.b));
+        ColorCorrectionCurveScript.UpdateParameters();
     }
 }

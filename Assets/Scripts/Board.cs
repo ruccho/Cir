@@ -358,7 +358,20 @@ namespace UTJ
                 return "ステージの構造上クリアが不可能です。";
             }
         }
+        public int TurnCount()
+        {
+            solve();
+            if (solusion_ != null && solusion_.Length > 0)
+            {
+                //Debug.LogFormat("solved:{0} moves.", solusion_.Length);
+                return solusion_.Length;
+            }
+            else
+            {
+                return -1;
+            }
 
+        }
         public void solve()
         {
             var hash = new Dictionary<int, int>();
