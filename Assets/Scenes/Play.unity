@@ -812,7 +812,7 @@ MonoBehaviour:
   PerfectSolutionRewardText: {fileID: 132516707}
   OnewayRewardText: {fileID: 1883584612}
   AdRewardText: {fileID: 1995249073}
-  AdButton: {fileID: 0}
+  AdButton: {fileID: 1050472237}
 --- !u!1 &223461941
 GameObject:
   m_ObjectHideFlags: 0
@@ -5796,10 +5796,6 @@ Prefab:
     - target: {fileID: 224955114026130614, guid: f95f3c7fc5826584e84a6c3d41270ab2,
         type: 2}
       propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1198404604796148, guid: f95f3c7fc5826584e84a6c3d41270ab2, type: 2}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

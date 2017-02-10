@@ -3,8 +3,8 @@
 [RequireComponent (typeof(UnityStandardAssets.ImageEffects.ColorCorrectionCurves))]
 public class ColorReplace : MonoBehaviour
 {
-    private Color ColorToReplaceObj = new Color(0.75f, 0.75f, 0);
-    private Color ColorToReplaceBg = new Color(0, 0, 0);
+    private Color ColorToReplaceObj = new Color(0, 0, 0);
+    private Color ColorToReplaceBg = new Color(1, 1, 1);
     UnityStandardAssets.ImageEffects.ColorCorrectionCurves ColorCorrectionCurveScript;
 
     void Awake()
@@ -33,6 +33,9 @@ public class ColorReplace : MonoBehaviour
                 ColorToReplaceBg.g = PlayerPrefs.GetFloat("CBgGreen");
                 ColorToReplaceBg.b = PlayerPrefs.GetFloat("CBgBlue");
             }
+        }else
+        {
+
         }
         //適用
         Debug.Log("Applying Color");

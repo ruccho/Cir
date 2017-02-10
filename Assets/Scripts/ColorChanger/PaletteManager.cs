@@ -30,22 +30,16 @@ public class PaletteManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        if (PlayerPrefs.HasKey("IsColorCustomized"))
-        {
-            if (PlayerPrefs.GetInt("IsColorCustomized") == 1)
-            {
-                //取得
-                ColorToReplaceObj.r = PlayerPrefs.GetFloat("CObjRed");
-                ColorToReplaceObj.g = PlayerPrefs.GetFloat("CObjGreen");
-                ColorToReplaceObj.b = PlayerPrefs.GetFloat("CObjBlue");
-                ColorToReplaceBg.r = PlayerPrefs.GetFloat("CBgRed");
-                ColorToReplaceBg.g = PlayerPrefs.GetFloat("CBgGreen");
-                ColorToReplaceBg.b = PlayerPrefs.GetFloat("CBgBlue");
+        //取得
+        ColorToReplaceObj.r = PlayerPrefs.GetFloat("CObjRed");
+        ColorToReplaceObj.g = PlayerPrefs.GetFloat("CObjGreen");
+        ColorToReplaceObj.b = PlayerPrefs.GetFloat("CObjBlue");
+        ColorToReplaceBg.r = PlayerPrefs.GetFloat("CBgRed");
+        ColorToReplaceBg.g = PlayerPrefs.GetFloat("CBgGreen");
+        ColorToReplaceBg.b = PlayerPrefs.GetFloat("CBgBlue");
 
-                refreshPalette();
+        refreshPalette();
 
-            }
-        }
         BGColorIndicator.color = ColorToReplaceBg;
         ObjColorIndicator.color = ColorToReplaceObj;
 

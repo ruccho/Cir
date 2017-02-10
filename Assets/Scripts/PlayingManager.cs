@@ -85,7 +85,6 @@ public class PlayingManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
         PaletteButton.interactable = (PlayerPrefs.GetInt("ClearedPresetStageNumber") >= 15);
         StateHistory = new List<PlayState>();
         RotateSEPlayed = false;
