@@ -3,7 +3,6 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections.Generic;
-using UnityEngine.Advertisements;
 
 
 public class PlayingManager : MonoBehaviour
@@ -48,6 +47,8 @@ public class PlayingManager : MonoBehaviour
     public Text CoinRemainText;
     public float DefaultGravity;
     public GameObject PaletteCanvas;
+    public RewardCoinManager RewardCoinManager;
+    public Button PaletteButton;
 
     int score;
 
@@ -75,23 +76,17 @@ public class PlayingManager : MonoBehaviour
         BIRDSEYE, ZOOM
     }
 
-    private PlaySceneModeType PlaySceneMode;
-    enum PlaySceneModeType
+    public PlaySceneModeType PlaySceneMode;
+    public enum PlaySceneModeType
     {
         PRESET, TWITTER, CODE, TEST
-    }
-    void Awake()
-    {
-#if (UNITY_ANDROID || UNITY_IOS)
-        Advertisement.Initialize("1152993");
-#endif
     }
 
     // Use this for initialization
     void Start()
     {
-        
 
+        PaletteButton.interactable = (PlayerPrefs.GetInt("ClearedPresetStageNumber") >= 15);
         StateHistory = new List<PlayState>();
         RotateSEPlayed = false;
         CameraMode = CameraModeType.BIRDSEYE;
@@ -106,7 +101,7 @@ public class PlayingManager : MonoBehaviour
         ClearPanel.SetActive(false);
         if (new StageStruct(PlayerPrefs.GetString("CurrentStageQuery")).StageTurnCount == 0)
         {
-            perfectBonus = false;
+            //perfectBonus = false;
             turn_remain = -1;
         }
         else
@@ -347,7 +342,7 @@ public class PlayingManager : MonoBehaviour
     {
         GetComponent<AudioSource>().PlayOneShot(Open);
         Instantiate(ShopPrefab);
-     }
+    }
 
     public void Goal()
     {
@@ -374,18 +369,12 @@ public class PlayingManager : MonoBehaviour
         {
             int fewest_turns = board.TurnCount();
             Debug.Log(fewest_turns.ToString() + "　手でクリア可能");
-            //計算
-            int rewardcoin = 0;
-            //基本報酬
-            rewardcoin = rewardcoin + (fewest_turns * 2);
-            //ゲームオーバーコンテニューペナルティ
-            rewardcoin = rewardcoin * (int)((perfectBonus == false) ? 0.8f : 1);
-            //最小手数クリア
-            rewardcoin = rewardcoin * (int)((fewest_turns == turned_count) ? 1.2f : 1);
+            RewardCoinManager.sendScoreInfo(turned_count, fewest_turns, perfectBonus);
         }
         else
         {
             Debug.Log("クリア不能");
+            RewardCoinManager.sendScoreInfo(11, 10, false);
         }
     }
 
@@ -419,14 +408,15 @@ public class PlayingManager : MonoBehaviour
             if (Application.systemLanguage == SystemLanguage.Japanese)
             {
                 RemainTurnText.GetComponent<Text>().text = "回数制限なし";
-            }else
+            }
+            else
             {
                 RemainTurnText.GetComponent<Text>().text = "No limit";
             }
         }
         else
         {
-            if(Application.systemLanguage == SystemLanguage.Japanese)
+            if (Application.systemLanguage == SystemLanguage.Japanese)
             {
                 RemainTurnText.GetComponent<Text>().text = "あと" + turn_remain.ToString() + "回";
             }
@@ -442,10 +432,11 @@ public class PlayingManager : MonoBehaviour
         if (turn_remain == 0)
         {
             Debug.Log("GAME OVER");
-            if(Application.systemLanguage == SystemLanguage.Japanese)
+            if (Application.systemLanguage == SystemLanguage.Japanese)
             {
                 CoinRemainText.text = "所持　" + PlayerPrefs.GetInt("Coin").ToString();
-            }else
+            }
+            else
             {
                 CoinRemainText.text = "Having　" + PlayerPrefs.GetInt("Coin").ToString();
             }
@@ -466,6 +457,7 @@ public class PlayingManager : MonoBehaviour
         PlayerObject.transform.localPosition = StateHistory[StateHistory.Count - 1].position;
         PlayerPrefs.SetInt("UndoNumber", PlayerPrefs.GetInt("UndoNumber") - 1);
         turned_count--;
+        perfectBonus = false;
     }
 
     public void continueGame()
@@ -479,90 +471,5 @@ public class PlayingManager : MonoBehaviour
         PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin") - 200);
     }
 
-    public void Clear()
-    {
-        //クリアパネルでOK
-
-#if (UNITY_ANDROID || UNITY_IOS)
-        PlayerPrefs.SetInt("VideoCount", PlayerPrefs.GetInt("VideoCount") + 1);
-        if ((PlayerPrefs.GetInt("VideoCount", 0) >= 3) && (PlaySceneMode != PlaySceneModeType.TEST))
-        {
-            if (Advertisement.IsReady("video"))
-            {
-                var options = new ShowOptions { resultCallback = HandleShowResultNormal };
-                Advertisement.Show("video", options);
-            }
-            else
-            {
-                Debug.Log("Advertisement is not ready");
-            }
-        }else
-        {
-            Quit();
-        }
-#else
-        
-        Quit();
-#endif
-    }
-
-
-#if (UNITY_ANDROID || UNITY_IOS)
-
-    public void RewardBonus()
-    {
-        if (PlaySceneMode == PlaySceneModeType.TEST)
-        {
-            return;
-        }
-            if (Advertisement.IsReady("rewardedVideo"))
-        {
-            var options = new ShowOptions { resultCallback = HandleShowResultReward };
-            Advertisement.Show("rewardedVideo", options);
-        }else
-        {
-            Debug.Log("Advertisement is not ready");
-        }
-    }
-
-    private void HandleShowResultReward(ShowResult result)
-    {
-        switch (result)
-        {
-            case ShowResult.Finished:
-                score = score * 2;
-                Debug.Log("The ad was successfully shown.");
-                //
-                // YOUR CODE TO REWARD THE GAMER
-                // Give coins etc.
-                break;
-            case ShowResult.Skipped:
-                Debug.Log("The ad was skipped before reaching the end.");
-                break;
-            case ShowResult.Failed:
-                Debug.LogError("The ad failed to be shown.");
-                break;
-        }
-    }
-    private void HandleShowResultNormal(ShowResult result)
-    {
-        switch (result)
-        {
-            case ShowResult.Finished:
-                Debug.Log("The ad was successfully shown.");
-                PlayerPrefs.SetInt("VideoCount", 0);
-                //
-                // YOUR CODE TO REWARD THE GAMER
-                // Give coins etc.
-                break;
-            case ShowResult.Skipped:
-                Debug.Log("The ad was skipped before reaching the end.");
-                PlayerPrefs.SetInt("VideoCount", 0);
-                break;
-            case ShowResult.Failed:
-                Debug.LogError("The ad failed to be shown.");
-                break;
-        }
-    }
-#endif
+    
 }

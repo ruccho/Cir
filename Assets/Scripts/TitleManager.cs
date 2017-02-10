@@ -12,8 +12,11 @@ public class TitleManager : MonoBehaviour
     public GameObject ErrorDialog;
     public AudioClip Enter;
     public GameObject InfoButton;
+    public GameObject ShopPrefab;
+    public GameObject PalettePanel;
     Canvas TitleCanvas;
     Canvas ModeSelectCanvas;
+    public UnityEngine.UI.Button PaletteButton;
 
     // Use this for initialization
     void Start()
@@ -47,6 +50,8 @@ public class TitleManager : MonoBehaviour
         fadeManager = GameObject.Find("FadeManager").GetComponent<FadeManager>();
         TitleCanvas = TitleCanvasObject.GetComponent<Canvas>();
         ModeSelectCanvas = ModeSelectCanvasObject.GetComponent<Canvas>();
+
+        PaletteButton.interactable = (PlayerPrefs.GetInt("ClearedPresetStageNumber") >= 15);
     }
 
     // Update is called once per frame
@@ -112,5 +117,17 @@ public class TitleManager : MonoBehaviour
         TitleCanvas.enabled = false;
         ModeSelectCanvas.enabled = false;
         ActiveCanvas.enabled = true;
+    }
+
+    public void OpenShop()
+    {
+        GetComponent<AudioSource>().PlayOneShot(Enter);
+        Instantiate(ShopPrefab);
+    }
+
+    public void OpenPalette()
+    {
+        GetComponent<AudioSource>().PlayOneShot(Enter);
+        PalettePanel.SetActive(true);
     }
 }
