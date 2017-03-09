@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if (UNITY_ANDROID || UNITY_IOS)
 using UnityEngine.Advertisements;
+#endif
 using UnityEngine.UI;
 
 public class RewardCoinManager : MonoBehaviour {

@@ -9,16 +9,24 @@ public class PresetStageSelector : MonoBehaviour
     public float FadeTimeSecond;
     public GameObject ErrorDialog;
     public TextAsset[] StageTexts;
-    public GameObject[] Buttons;
+    //public GameObject[] Buttons;
+    public Image[] StageElements;
+    public ScrollRect Scroll;
     FadeManager fadeManager;
     // Use this for initialization
     void Start()
     {
         ChangerApplier.TurnOn();
         fadeManager = GameObject.Find("FadeManager").GetComponent<FadeManager>();
-        for(int i = 0; i < Buttons.Length - (PlayerPrefs.GetInt("ClearedPresetStageNumber") + 1); i++)
+        for (int i = 0; i < StageElements.Length - (PlayerPrefs.GetInt("ClearedPresetStageNumber") + 1); i++)
         {
-            Buttons[i + PlayerPrefs.GetInt("ClearedPresetStageNumber") + 1].GetComponent<Image>().color = new Color(0.2f, 0.2f, 0.2f);
+            StageElements[i + PlayerPrefs.GetInt("ClearedPresetStageNumber") + 1].color = new Color(0, 0, 0);
+        }
+        if (PlayerPrefs.HasKey("CurrentPresetStageNumber"))
+        {
+            //Debug.Log(PlayerPrefs.GetInt("CurrentPresetStageNumber").ToString());
+            Debug.Log((1f / (StageElements.Length) * (PlayerPrefs.GetInt("CurrentPresetStageNumber") - 1f)).ToString());
+            Scroll.horizontalNormalizedPosition = 1f / (StageElements.Length) * (PlayerPrefs.GetInt("CurrentPresetStageNumber") - 1f);
         }
     }
 
@@ -30,9 +38,9 @@ public class PresetStageSelector : MonoBehaviour
 
     public void ButtonPlay(int StageNumber)
     {
-        if(PlayerPrefs.GetInt("ClearedPresetStageNumber") + 1 < StageNumber)
+        if (PlayerPrefs.GetInt("ClearedPresetStageNumber") + 1 < StageNumber)
         {
-            ErrorDialog.GetComponent<ErrorDialog>().OpenDialog("まだプレイできません。1から順に進めてください。");
+            //ErrorDialog.GetComponent<ErrorDialog>().OpenDialog("まだプレイできません。1から順に進めてください。");
             return;
         }
         GetComponent<AudioSource>().PlayOneShot(ClickSound);

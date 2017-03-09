@@ -302,14 +302,14 @@ public class PlayingManager : MonoBehaviour
 
     public void OpenMenu()
     {
-        ChangerApplier.TurnOff();
+        //ChangerApplier.TurnOff();
         GetComponent<AudioSource>().PlayOneShot(Open);
         MenuPanel.SetActive(true);
     }
 
     public void CloseMenu()
     {
-        ChangerApplier.TurnOn();
+        //ChangerApplier.TurnOn();
         GetComponent<AudioSource>().PlayOneShot(Open);
         MenuPanel.SetActive(false);
     }
